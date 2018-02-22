@@ -1,0 +1,51 @@
+HOME
+Report A Problem
+View Jobs
+Asset Managment (dropdown)
+	View Asset
+	Edit Asset Details
+	Import Asset Information
+(Close Drop down)
+Statustics
+Logout
+
+
+<!-- CUSTOM FILES -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css/master.css" />
+	<script src="js/main.js"></script>
+
+
+	<!-- Before a User logs on Menu -->
+	<!--
+	<nav class="navbar navbar-dark bg-dark sticky-top">
+		<a href="#">Home</a>
+		<a href="#">Login</a>
+	</nav>
+	<br>
+-->
+	<!-- Standard User Menu -->
+	<!--
+	<div>
+		<nav class="navbar navbar-dark bg-dark">
+			<a href="#">Home</a>
+			<a href="#">Report A Problem</a>
+			<a href="#">Logout</a>
+		</nav>
+	</div>
+	<br>
+	-->
+
+
+	<!-- admin nav bar menu -->
+	<!--
+HOME
+Report A Problem
+View Jobs
+Asset Managment (dropdown)
+	View Asset
+	Edit Asset Details
+	Import Asset Information
+(Close Drop down)
+Statustics
+Logout
+-->
