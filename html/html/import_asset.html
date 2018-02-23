@@ -47,7 +47,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-collapse-down"></span> Asset Managment</a>
             <ul class="dropdown-menu">
               <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> View Asset</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-import"></span> Import Asset Information</a></li>
+              <li><a href="#" <a href="#" class="" id="Import_Asset_Link"><span class="glyphicon glyphicon-import"></span> Import Asset Information</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Write Assets Off</a></li>
             </ul>
           </li>
@@ -75,14 +75,54 @@
   <footer>
     <p class="same_line">Developed By Ethan Houley.</p>
     <p class="same_line"> Copyright &copy; 2018 Copyright Holder All Rights Reserved.</p>
+
   </footer>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="Import_Asset" role="dialog">
+    <div class="modal-dialog">
 
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Bootstrap JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-import"></span> Import Asset Infomation</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form class="" action="" role="form" method="post">
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+              <p>Please make sure the file you are uploading is a <b>.csv</b> file.</p>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">File Upload</span>
+                <input type="file" name="" accept=".csv" value="">
+              </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-import"></span> Import Assets</button>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+          </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $("#Import_Asset_Link").click(function() {
+              $("#Import_Asset").modal();
+            });
+          });
+
+        </script>
+
 </body>
 
 </html>
