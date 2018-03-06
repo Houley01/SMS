@@ -1,0 +1,56 @@
+Controller - communicates between the users action and the website.
+view - is what the users sees
+model - communicates between the database and Controller
+
+
+
+***************************
+***** WORK TO BE DONE *****
+***************************
+1.1 Folder Structure [DONE]
+1.2 UNSET UserStatus For A New Session [DONE BUT MADE SEQURITY PROBLEM, SEE ISSUE 1]
+
+*****DATABASE*****
+2.1 Populate Database
+2.2 Communicates To Database [DONE]
+2.3 Pull Information From Database
+2.4 Insert Data Into The Database
+2.5 Nav Bar switch statement [DONE]
+2.6 Body Bar switch statement [DONE]
+
+*****Login*****
+3.1 Login Page [DONE]
+3.2 Session Information
+3.3 Logout Code [DONE cause security Problem]
+
+*****Job Form*****
+4.1 Required Parts Of A Form
+4.2 Insert Form Data Into The Database 
+4.3
+
+*****View Jobs*****
+5.1 View Jobs (Pull Information From Database into a table)
+5.2 Updated Jobs (Updated Database)
+5.3 Close Jobs  (change Null to todays date, when the job is finished)
+5.4
+
+*****Asset Management*****
+6.1 Pull Information From Database
+6.2 Insert Information To Database
+  6.2.1 Have csv file upload to Database
+  6.2.2 Have CSV file add to the write table (Write query)
+6.3 Update Information From Database
+  6.3.1 Updated Location
+  6.3.2 Write Asset Off
+
+*****Home Page*****
+7.1 JavaScript Current Time
+7.2 Session Welcome, F.Name (F.Name From Database)
+7.3 Most Recent New Job Request (Pull the 3 newest Jobs from Database)
+7.4 Most Recent closed Job Request (Pull the 3 closed Jobs from Database)
+
+*****Security Issue*****
+ISSUE 1(SOLUTION NEED)
+User can logout but can use the go back button on the browser to see other pages that where open when the user was logged in.
+* Possible Solution
+    * using an if statement to on every webpage to check UserStatus, if 0 go back to index.php, other way upload.
