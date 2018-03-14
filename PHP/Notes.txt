@@ -1,6 +1,16 @@
 Controller - communicates between the users action and the website.
 view - is what the users sees
 model - communicates between the database and Controller
+Content
+1. Work to be done that does not fit a category
+2. Database
+3. Login
+4. Job Form
+5. View Jobs
+6. Asset Management
+7. Home Page
+8. Security Issue
+9. Solution
 
 
 
@@ -8,7 +18,7 @@ model - communicates between the database and Controller
 ***** WORK TO BE DONE *****
 ***************************
 1.1 Folder Structure [DONE]
-1.2 UNSET UserStatus For A New Session [DONE BUT MADE SEQURITY PROBLEM, SEE ISSUE 1]
+1.2 UNSET UserStatus For A New Session [DONE BUT MADE SEQURITY PROBLEM, SEE ISSUE 1] {Repaired}
 
 *****DATABASE*****
 2.1 Populate Database
@@ -21,11 +31,11 @@ model - communicates between the database and Controller
 *****Login*****
 3.1 Login Page [DONE]
 3.2 Session Information
-3.3 Logout Code [DONE cause security Problem]
+3.3 Logout Code [DONE cause security Problem] (unset UserStatus,) {Problem fixed see soloution @ user access problem 1}
 
 *****Job Form*****
 4.1 Required Parts Of A Form
-4.2 Insert Form Data Into The Database 
+4.2 Insert Form Data Into The Database
 4.3
 
 *****View Jobs*****
@@ -49,8 +59,30 @@ model - communicates between the database and Controller
 7.3 Most Recent New Job Request (Pull the 3 newest Jobs from Database)
 7.4 Most Recent closed Job Request (Pull the 3 closed Jobs from Database)
 
-*****Security Issue*****
-ISSUE 1(SOLUTION NEED)
+******Security Issue******
+ISSUE 1(SOLUTION NEED) {fixed check user access problem 1 for solution}
 User can logout but can use the go back button on the browser to see other pages that where open when the user was logged in.
 * Possible Solution
     * using an if statement to on every webpage to check UserStatus, if 0 go back to index.php, other way upload.
+
+******Solution******
+
+********************************
+*    User access problem 1     *
+********************************
+Solution by using switch statement. e.g.
+switch ($_SESSION['UserStatus']) {
+  case 1:
+    include 'include/Staff_Nav.php';
+    break;
+  case 2:
+    include 'include/Admin_Nav.php';
+    break;
+  default:
+    header('location: index.php');
+    break;
+}
+Meaning if a user does not have a recognised  'UserStatus'
+********************************
+* END OF USER ACCESS PROBLEM 1 *
+********************************

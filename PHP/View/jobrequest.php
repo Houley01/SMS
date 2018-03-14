@@ -10,7 +10,12 @@
   	case 2:
     	include 'include/Admin_Nav.php';
     	break;
+
+		default:
+			header('location: index.php');
+			break;
 }
+
  ?>
 <div class="Work_Around_Nav">
     <div class="container">
@@ -46,17 +51,16 @@
           <span class="input-group-addon" id="basic-addon1">Room Number #</span>
           <select class="form-control" name="Room" id="Room Number">
             <option disabled selected>Please Select What Room #</option>
-					</select>
-				</div>
-            <?php
+						<?php
 
 						$RoomOptions = "SELECT * FROM `location` WHERE `Building` = 'A_Block';";
 						$conn = dbConnect();
 						$stmt = $conn->prepare($RoomOptions);
 						$stmt->execute();
 						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+						for ($loop = 0; $loop < count($result); $loop++) {
+							echo "<option value="$result[$loop]['LocationID']">"$result[$loop]['Room']"</option>";
+						}
 
 //						for ($loop = 0; $loop < count($result); $loop++) {
 							//echo "<option value="$result[$loop]['LocationID']" Name="room">'$result[$loop]['Room']'</option>"
@@ -66,6 +70,10 @@
 
 
 						?>
+
+					</select>
+				</div>
+
       </div>
       <div class="row">
         <div class="row_heading">
@@ -98,3 +106,6 @@
 
 
     <hr>
+<?php
+include 'include/footer.php';
+ ?>
