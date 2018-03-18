@@ -12,15 +12,15 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Report A Problem</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> View Jobs</a></li>
+					<li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="jobrequest.php"><span class="glyphicon glyphicon-pencil"></span> Report A Problem</a></li>
+					<li><a href="ViewJobs.php"><span class="glyphicon glyphicon-eye-open"></span> View Jobs</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-collapse-down"></span> Asset Managment</a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> View Asset</a></li>
+							<li><a href="ViewAsset.php"><span class="glyphicon glyphicon-eye-open"></span> View Asset</a></li>
+							<li><a href="WriteAssetsOff.php"><span class="glyphicon glyphicon-edit"></span> Write Assets Off</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-import"></span> Import Asset Information</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-edit"></span> Write Assets Off</a></li>
 						</ul>
 					</li>
 					<li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statustics</a></li>

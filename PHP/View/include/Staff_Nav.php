@@ -1,4 +1,4 @@
-<!-- Admin User Menu -->
+<!-- Staff User Menu -->
 <nav class="navbar navbar-inverse remove_radius navbar-fixed-top background_black">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -19,7 +19,5 @@
 				<li><a href="../Model/logout.php" class="text_nav"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid -->
 </nav>

@@ -30,13 +30,18 @@ Content
 
 *****Login*****
 3.1 Login Page [DONE]
-3.2 Session Information
+3.2 Update Session Information [DONE]
 3.3 Logout Code [DONE cause security Problem] (unset UserStatus,) {Problem fixed see soloution @ user access problem 1}
 
 *****Job Form*****
 4.1 Required Parts Of A Form
-4.2 Insert Form Data Into The Database
-4.3
+4.2 Room Information. [DONE refer to 4.2.2]
+  4.2.1 Gather Information From DATABASE
+  4.2.2 Write a JavaScript to make option hide options depending on radio buttons
+4.3 Insert Form Data Into The Database
+  4.3.1 DATA clean
+  4.3.2 Submit.
+  4.3.3 Redirect to index with an alert.
 
 *****View Jobs*****
 5.1 View Jobs (Pull Information From Database into a table)
