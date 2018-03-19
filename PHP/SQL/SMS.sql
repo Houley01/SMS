@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2018 at 08:40 AM
+-- Generation Time: Mar 19, 2018 at 08:41 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -35,8 +35,36 @@ CREATE TABLE `asset` (
   `Serial_Number` varchar(255) NOT NULL,
   `DateIntroduced` date NOT NULL,
   `DateWrittenOff` date DEFAULT NULL,
-  `LocationID` int(10) UNSIGNED NOT NULL
+  `RoomID` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `building`
+--
+
+CREATE TABLE `building` (
+  `BuildingID` int(10) UNSIGNED NOT NULL,
+  `BuildingName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `building`
+--
+
+INSERT INTO `building` (`BuildingID`, `BuildingName`) VALUES
+(1, 'A Block'),
+(2, 'B Block'),
+(3, 'C  Block'),
+(4, 'D Block'),
+(5, 'E Block'),
+(6, 'F Block'),
+(7, 'G Block'),
+(8, 'H Block'),
+(9, 'I  Block'),
+(10, 'J Block'),
+(11, 'Library');
 
 -- --------------------------------------------------------
 
@@ -48,7 +76,7 @@ CREATE TABLE `job` (
   `JobID` int(10) UNSIGNED NOT NULL,
   `DateLogged` date NOT NULL,
   `UserID` int(10) UNSIGNED NOT NULL,
-  `LocationID` int(10) UNSIGNED NOT NULL,
+  `RoomID` int(10) UNSIGNED NOT NULL,
   `AssetID` int(10) UNSIGNED NOT NULL,
   `JobStatus` int(3) NOT NULL DEFAULT '0',
   `PartsUsed` varchar(255) DEFAULT NULL,
@@ -58,130 +86,141 @@ CREATE TABLE `job` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- Table structure for table `rooms`
 --
 
-CREATE TABLE `location` (
-  `LocationID` int(10) UNSIGNED NOT NULL,
-  `Building` varchar(25) NOT NULL,
-  `Room` varchar(60) NOT NULL
+CREATE TABLE `rooms` (
+  `RoomID` int(10) UNSIGNED NOT NULL,
+  `RoomName` varchar(255) NOT NULL,
+  `BuildingID` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `location`
+-- Dumping data for table `rooms`
 --
 
-INSERT INTO `location` (`LocationID`, `Building`, `Room`) VALUES
-(1, 'Waiting_For_Building', 'Waiting_For_Room'),
-(2, 'A_Block', '1'),
-(3, 'A_Block', '2'),
-(4, 'A_Block', '3'),
-(5, 'A_Block', '4'),
-(6, 'A_Block', '5'),
-(7, 'A_Block', '6'),
-(8, 'A_Block', '7'),
-(9, 'A_Block', '8'),
-(10, 'A_Block', '9'),
-(11, 'A_Block', '10'),
-(12, 'A_Block', '11'),
-(13, 'A_Block', '12'),
-(14, 'A_Block', '13'),
-(15, 'A_Block', '14'),
-(16, 'A_Block', '15'),
-(17, 'A_Block', '16'),
-(18, 'A_Block', '17'),
-(19, 'A_Block', '18'),
-(20, 'A_Block', '19'),
-(21, 'A_Block', '20'),
-(22, 'A_Block', '21'),
-(23, 'A_Block', '22'),
-(24, 'A_Block', '23'),
-(25, 'A_Block', '24'),
-(26, 'A_Block', '25'),
-(27, 'B_Block', '1'),
-(28, 'B_Block', '2'),
-(29, 'B_Block', '3'),
-(30, 'B_Block', '4'),
-(31, 'B_Block', '5'),
-(32, 'B_Block', '6'),
-(33, 'C_Block', '1'),
-(34, 'C_Block', '2'),
-(35, 'C_Block', '3'),
-(36, 'C_Block', '4'),
-(37, 'C_Block', '5'),
-(38, 'C_Block', '6'),
-(39, 'C_Block', '7'),
-(40, 'C_Block', '8'),
-(41, 'C_Block', '9'),
-(42, 'C_Block', '10'),
-(43, 'D_Block', '1'),
-(44, 'E_Block', '5'),
-(45, 'F_Block', '1'),
-(46, 'F_Block', '2'),
-(47, 'F_Block', '3'),
-(48, 'F_Block', '4'),
-(49, 'F_Block', '5'),
-(50, 'F_Block', '6'),
-(51, 'F_Block', '7'),
-(52, 'F_Block', '8'),
-(53, 'F_Block', '9'),
-(54, 'F_Block', '10'),
-(55, 'F_Block', '11'),
-(56, 'F_Block', '12'),
-(57, 'F_Block', '13'),
-(58, 'F_Block', '14'),
-(59, 'F_Block', '15'),
-(60, 'F_Block', '16'),
-(61, 'F_Block', '17'),
-(62, 'F_Block', '18'),
-(63, 'F_Block', '19'),
-(64, 'F_Block', '20'),
-(65, 'F_Block', '21'),
-(66, 'F_Block', '22'),
-(67, 'F_Block', '23'),
-(68, 'F_Block', '24'),
-(69, 'F_Block', '25'),
-(70, 'F_Block', '26'),
-(71, 'F_Block', '27'),
-(72, 'F_Block', '28'),
-(73, 'F_Block', '29'),
-(74, 'F_Block', '30'),
-(75, 'F_Block', '31'),
-(76, 'F_Block', '32'),
-(77, 'F_Block', '33'),
-(78, 'F_Block', '34'),
-(79, 'F_Block', '35'),
-(80, 'G_Block', '1'),
-(81, 'G_Block', '2'),
-(82, 'G_Block', '3'),
-(83, 'G_Block', '4'),
-(84, 'G_Block', '5'),
-(85, 'G_Block', '6'),
-(86, 'G_Block', '7'),
-(87, 'G_Block', '8'),
-(88, 'G_Block', '9'),
-(89, 'G_Block', '10'),
-(90, 'G_Block', '11'),
-(91, 'G_Block', '12'),
-(92, 'G_Block', '13'),
-(93, 'G_Block', '14'),
-(94, 'G_Block', '15'),
-(95, 'G_Block', '16'),
-(96, 'G_Block', '17'),
-(97, 'G_Block', '18'),
-(98, 'G_Block', '19'),
-(99, 'G_Block', '20'),
-(100, 'G_Block', '21'),
-(101, 'G_Block', '22'),
-(102, 'G_Block', '23'),
-(103, 'G_Block', '24'),
-(104, 'G_Block', '25'),
-(105, 'Sports_Hall', '1'),
-(106, 'Sports_Hall', '3'),
-(107, 'Sports_Hall', '4'),
-(108, 'Library', 'IT'),
-(109, 'Library', 'Laptops'),
-(110, 'Library', 'Desktops');
+INSERT INTO `rooms` (`RoomID`, `RoomName`, `BuildingID`) VALUES
+(1, 'A01', 1),
+(2, 'A02', 1),
+(3, 'A03', 1),
+(4, 'A04', 1),
+(5, 'A05', 1),
+(6, 'A06', 1),
+(7, 'A07', 1),
+(8, 'A08', 1),
+(9, 'A09', 1),
+(10, 'A10', 1),
+(11, 'A11', 1),
+(12, 'A12', 1),
+(13, 'A13', 1),
+(14, 'A14', 1),
+(15, 'A15', 1),
+(16, 'A16', 1),
+(17, 'A17', 1),
+(18, 'A18', 1),
+(19, 'A19', 1),
+(20, 'A20', 1),
+(21, 'A21', 1),
+(22, 'A22', 1),
+(23, 'A23', 1),
+(24, 'A24', 1),
+(25, 'A25', 1),
+(26, 'B01', 2),
+(27, 'B02', 2),
+(28, 'B03', 2),
+(29, 'B04', 2),
+(30, 'B05', 2),
+(31, 'B06', 2),
+(32, 'C01', 3),
+(33, 'D01', 4),
+(34, 'D02', 4),
+(35, 'D03', 4),
+(36, 'D04', 4),
+(37, 'E01', 5),
+(38, 'E02', 5),
+(39, 'E03', 5),
+(40, 'E04', 5),
+(41, 'E05', 5),
+(42, 'F01', 6),
+(43, 'F02', 6),
+(44, 'F03', 6),
+(45, 'F04', 6),
+(46, 'F05', 6),
+(47, 'F06', 6),
+(48, 'F07', 6),
+(49, 'F08', 6),
+(50, 'F09', 6),
+(51, 'F10', 6),
+(52, 'F11', 6),
+(53, 'F12', 6),
+(54, 'F13', 6),
+(55, 'F14', 6),
+(56, 'F15', 6),
+(57, 'F16', 6),
+(58, 'F17', 6),
+(59, 'F18', 6),
+(60, 'F19', 6),
+(61, 'F20', 6),
+(62, 'F21', 6),
+(63, 'F22', 6),
+(64, 'F23', 6),
+(65, 'F24', 6),
+(66, 'F25', 6),
+(67, 'F26', 6),
+(68, 'F27', 6),
+(69, 'F28', 6),
+(70, 'F29', 6),
+(71, 'F30', 6),
+(72, 'F31', 6),
+(73, 'F32', 6),
+(74, 'F33', 6),
+(75, 'F34', 6),
+(76, 'F35', 6),
+(77, 'G01', 7),
+(78, 'G02', 7),
+(79, 'G03', 7),
+(80, 'G04', 7),
+(81, 'G05', 7),
+(82, 'G06', 7),
+(83, 'G07', 7),
+(84, 'G08', 7),
+(85, 'G09', 7),
+(86, 'G10', 7),
+(87, 'G11', 7),
+(88, 'G12', 7),
+(89, 'G13', 7),
+(90, 'G14', 7),
+(91, 'G15', 7),
+(92, 'G16', 7),
+(93, 'G17', 7),
+(94, 'G18', 7),
+(95, 'G19', 7),
+(96, 'G20', 7),
+(97, 'G21', 7),
+(98, 'G22', 7),
+(99, 'G23', 7),
+(100, 'G24', 7),
+(101, 'G25', 7),
+(102, 'H01', 8),
+(103, 'I01', 9),
+(104, 'I02', 9),
+(105, 'I03', 9),
+(106, 'I04', 9),
+(107, 'I05', 9),
+(108, 'I06', 9),
+(109, 'I07', 9),
+(110, 'I08', 9),
+(111, 'I09', 9),
+(112, 'I10', 9),
+(113, 'I11', 9),
+(114, 'I12', 9),
+(115, 'I13', 9),
+(116, 'I14', 9),
+(117, 'I15', 9),
+(118, 'J01', 10),
+(119, 'IT', 11),
+(120, 'Desktops', 11),
+(121, 'Laptops', 11);
 
 -- --------------------------------------------------------
 
@@ -215,22 +254,29 @@ INSERT INTO `user` (`UserID`, `F.Name`, `L.Name`, `Username`, `Password`, `UserS
 --
 ALTER TABLE `asset`
   ADD PRIMARY KEY (`AssetID`),
-  ADD KEY `FK_Location#1` (`LocationID`);
+  ADD KEY `FK_Location#1` (`RoomID`);
+
+--
+-- Indexes for table `building`
+--
+ALTER TABLE `building`
+  ADD PRIMARY KEY (`BuildingID`);
 
 --
 -- Indexes for table `job`
 --
 ALTER TABLE `job`
   ADD PRIMARY KEY (`JobID`),
-  ADD KEY `FK_AssetID#1` (`AssetID`),
-  ADD KEY `FK_UserID` (`UserID`),
-  ADD KEY `FK_Location#2` (`LocationID`);
+  ADD KEY `FK_Room#1` (`RoomID`) USING BTREE,
+  ADD KEY `FK_AssetID#1` (`AssetID`) USING BTREE,
+  ADD KEY `FK_UserID` (`UserID`) USING BTREE;
 
 --
--- Indexes for table `location`
+-- Indexes for table `rooms`
 --
-ALTER TABLE `location`
-  ADD PRIMARY KEY (`LocationID`);
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`RoomID`),
+  ADD KEY `FK_Building#1` (`BuildingID`);
 
 --
 -- Indexes for table `user`
@@ -249,16 +295,22 @@ ALTER TABLE `asset`
   MODIFY `AssetID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `building`
+--
+ALTER TABLE `building`
+  MODIFY `BuildingID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
   MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `location`
+-- AUTO_INCREMENT for table `rooms`
 --
-ALTER TABLE `location`
-  MODIFY `LocationID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+ALTER TABLE `rooms`
+  MODIFY `RoomID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -274,15 +326,21 @@ ALTER TABLE `user`
 -- Constraints for table `asset`
 --
 ALTER TABLE `asset`
-  ADD CONSTRAINT `FK_Location#1` FOREIGN KEY (`LocationID`) REFERENCES `location` (`LocationID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_Room#2` FOREIGN KEY (`RoomID`) REFERENCES `rooms` (`RoomID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `job`
 --
 ALTER TABLE `job`
-  ADD CONSTRAINT `FK_AssetID#1` FOREIGN KEY (`AssetID`) REFERENCES `asset` (`AssetID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_Location#2` FOREIGN KEY (`LocationID`) REFERENCES `location` (`LocationID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_UserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`AssetID`) REFERENCES `asset` (`AssetID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`RoomID`) REFERENCES `rooms` (`RoomID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `job_ibfk_3` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `FK_Building#1` FOREIGN KEY (`BuildingID`) REFERENCES `building` (`BuildingID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

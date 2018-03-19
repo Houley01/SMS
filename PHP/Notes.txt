@@ -19,6 +19,7 @@ Content
 ***************************
 1.1 Folder Structure [DONE]
 1.2 UNSET UserStatus For A New Session [DONE BUT MADE SEQURITY PROBLEM, SEE ISSUE 1] {Repaired}
+1.3 Job Form, Getting the data from the Array to the options
 
 *****DATABASE*****
 2.1 Populate Database

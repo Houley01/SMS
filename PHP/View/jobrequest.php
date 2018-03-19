@@ -1,3 +1,4 @@
+<script src="../Control/js/ajax.js"defer></script>
 <?php
 	session_start();
 	include 'include/header.php';
@@ -40,14 +41,14 @@
 						<option disabled selected>Please Select What Building </option>
 						<?php
 
-						$BuildingRoomOptions = "SELECT * FROM `location`;";
+						$BuildingOptions = "SELECT * FROM `building`;";
 						$conn = dbConnect();
-						$stmt = $conn->prepare($BuildingRoomOptions);
+						$stmt = $conn->prepare($BuildingOptions);
 						$stmt->execute();
 						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 						for ($loop = 0; $loop < count($result); $loop++) {
-							echo '<option value="' . $result[$loop]['Building'] . '" class="' . $result[$loop]['Building'] . '" Name="Building"> ' . $result[$loop]['Building'] . '</option>';
+							echo '<option value="' . $result[$loop]['BuildingID'] . '" class="' . $result[$loop]['BuildingName'] . '" Name="Building"> ' . $result[$loop]['BuildingName'] . '</option>';
 						}
 						echo "</select>";
 						?>
@@ -64,15 +65,15 @@
             <option disabled selected>Please Select What Room #</option>
 						<?php
 						// TEST version $RoomOptions = "SELECT * FROM `location` WHERE `Building` = 'A_Block';";
-					//	$RoomOptions = "SELECT * FROM `location`;";
-					//	$conn = dbConnect();
-					//	$stmt = $conn->prepare($RoomOptions);
-					//	$stmt->execute();
-					//	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$RoomOptions = "SELECT * FROM `rooms` WHERE `BuildingID` = 1;";
+						$conn = dbConnect();
+						$stmt = $conn->prepare($RoomOptions);
+						$stmt->execute();
+						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 						for ($loop = 0; $loop < count($result); $loop++) {
-							echo '<option value="' . $result[$loop]['LocationID'] . '" class="' . $result[$loop]['Building'] . '" Name="Room"> ' . $result[$loop]['Room'] . '</option>';
+							echo '<option value="' . $result[$loop]['RoomID'] . '" class="' . $result[$loop]['BuildingID'] . '" Name="Room"> ' . $result[$loop]['RoomName'] . '</option>';
 						}
 						echo "</select>";
 						?>
