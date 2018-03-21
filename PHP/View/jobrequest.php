@@ -37,7 +37,7 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">Building</span>
-					<select class="form-control" name="Room" id="RoomNumber">
+					<select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
 						<option disabled selected>Please Select What Building </option>
 						<?php
 
@@ -63,21 +63,7 @@
           <span class="input-group-addon" id="basic-addon1">Room Number #</span>
           <select class="form-control" name="Room" id="RoomNumber">
             <option disabled selected>Please Select What Room #</option>
-						<?php
-						// TEST version $RoomOptions = "SELECT * FROM `location` WHERE `Building` = 'A_Block';";
-						$RoomOptions = "SELECT * FROM `rooms` WHERE `BuildingID` = 1;";
-						$conn = dbConnect();
-						$stmt = $conn->prepare($RoomOptions);
-						$stmt->execute();
-						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-						for ($loop = 0; $loop < count($result); $loop++) {
-							echo '<option value="' . $result[$loop]['RoomID'] . '" class="' . $result[$loop]['BuildingID'] . '" Name="Room"> ' . $result[$loop]['RoomName'] . '</option>';
-						}
-						echo "</select>";
-						?>
-
+					</select>
 				</div>
 
       </div>

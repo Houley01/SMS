@@ -1,22 +1,21 @@
 <?php
-
 	include '../Connection.php';
-
+	$roomdetails = $_GET['RoomDetails'];
 	header('Content-Type: application/json');
 
-	function GetBuilding($BuildingID)
-	{
-		$BuildingOptions = "SELECT * FROM `rooms` WHERE `BuildingID` = ". $BuildingID ." ;";
+		$BuildingOptions = "SELECT * FROM `rooms` WHERE `BuildingID` = ". $roomdetails ." ;";
 		$conn = dbConnect();
 		$stmt = $conn->prepare($BuildingOptions);
 		$stmt->execute();
-		return $staticBuildingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	}
-	print_r (GetBuilding(1));
-	die();
+		$staticBuildingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	if (isset($_GET['RoomDetails'])) {
-			echo json_encode(Array($_GET['RoomDetails']));
+
+	if (isset($roomdetails)) {
+
+		echo json_encode($staticBuildingResults);
+
+	}else{
+			echo json_encode(Array($roomdetails,false));
 	}
 
  ?>

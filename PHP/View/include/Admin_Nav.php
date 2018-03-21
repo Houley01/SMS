@@ -23,7 +23,7 @@
 							<li><a href="#"><span class="glyphicon glyphicon-import"></span> Import Asset Information</a></li>
 						</ul>
 					</li>
-					<li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statustics</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statistics</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right ">
 					<li><a href="../Model/logout.php" class="text_nav"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
