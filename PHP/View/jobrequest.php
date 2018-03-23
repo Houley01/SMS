@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="container">
-    <form class="" action="index.html" method="post">
+    <form class="" action="../Model/Submit_Form.php" method="post">
       <!-- name of person reporting a Problem -->
       <input type="text" hidden name="Username" value="">
 
@@ -73,22 +73,22 @@
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Mouse</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse" name="Broken_Mouse">
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Keyboards</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Keyboard" name="Broken_Keyboard">
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Screens</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Screen" name="Broken_Screen">
         </div>
       </div>
       <div class="row">
         <div class="row_heading">
-          <h3>Any Other Problem Or Infomation We May Need</h3>
+          <h3>Any Other Problem Or Infomation We May Need To Know Before Coming Out.</h3>
         </div>
-        <textarea name="name" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false"></textarea>
+        <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false"></textarea>
       </div>
 
       <div class="row">

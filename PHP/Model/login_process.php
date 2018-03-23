@@ -9,11 +9,11 @@
 
 	if($stmt->rowcount() == 0) {
 			$_SESSION['error'] = "Login invalid please try again";
-			header('Location: ../index.php');
+			header('Location: ../view/index.php');
 	} else {
 			$_SESSION['UserID'] = $result['UserID'];
 			$_SESSION['UserStatus'] = $result['UserStatus'];
-			$_SESSION['F.Name'] = $result['F.Name'];
+			$_SESSION['FName'] = $result['F.Name'];
 			$_SESSION['message'] = "Login successful";
 			header('Location: ../view/index.php');
 	}

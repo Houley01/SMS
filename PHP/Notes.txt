@@ -19,38 +19,58 @@ Content
 ***************************
 1.1 Folder Structure [DONE]
 1.2 UNSET UserStatus For A New Session [DONE BUT MADE SEQURITY PROBLEM, SEE ISSUE 1] {Repaired}
-1.3 Job Form, Getting the data from the Array to the options
+1.3 Job Form, Getting the data from the Array to the options [DONE]
+1.4 Find this '<' and remove. [DONE] {WAS HIDDEN IN include/footer.php file}
 
 *****DATABASE*****
-2.1 Populate Database
+2.1 Populate Database [3 out of 5]
+  2.1.1 TABLE Asset     [Upload CSV]
+  2.1.2 TABLE Building  [DONE]
+  2.1.3 TABLE Job       [Write CSV And Upload]
+  2.1.4 TABLE Rooms     [DONE]
+  2.1.5 TABLE User      [DONE]
 2.2 Communicates To Database [DONE]
-2.3 Pull Information From Database
-2.4 Insert Data Into The Database
-2.5 Nav Bar switch statement [DONE]
-2.6 Body Bar switch statement [DONE]
+2.3 Pull Information From Database [DONE]
+2.4 Nav Bar switch statement [DONE]
+2.5 Body switch statement [DONE]
 
 *****Login*****
 3.1 Login Page [DONE]
 3.2 Update Session Information [DONE]
 3.3 Logout Code [DONE cause security Problem] (unset UserStatus,) {Problem fixed see soloution @ user access problem 1}
 
-*****Job Form*****
+****************************
+*         Job Form         *
+****************************
 4.1 Required Parts Of A Form
-4.2 Room Information. [DONE refer to 4.2.2]
-  4.2.1 Gather Information From DATABASE
-  4.2.2 Write a JavaScript to make option hide options depending on radio buttons
+4.2 Room Information. [DONE]
+  4.2.1 Gather Information From DATABASE [DONE]
+  4.2.2 Change the options of the building depending on what select options is choose at Building [DONE]
 4.3 Insert Form Data Into The Database
   4.3.1 DATA clean
-  4.3.2 Submit.
+  4.3.2 Submit. [DONE]
   4.3.3 Redirect to index with an alert.
 
-*****View Jobs*****
+****************************
+*        View Jobs         *
+****************************
 5.1 View Jobs (Pull Information From Database into a table)
-5.2 Updated Jobs (Updated Database)
-5.3 Close Jobs  (change Null to todays date, when the job is finished)
-5.4
+  5.1.1 Pull Information [DONE]
+  5.1.2 Change Numbers into readable Words
+    5.1.2.1 Location
+    5.1.2.2 Job Status
+5.2 View And Update Button
+  5.2.1 Open Model With Information From DATABASE
+  5.2.2 Update SQL script for database.
+  5.2.3 Close Job Within Modal
 
-*****Asset Management*****
+5.3 Updated Jobs (Updated Database)
+5.4 Close Jobs  (change Null to todays date, when the job is finished)
+5.5
+
+****************************
+*     Asset Management     *
+****************************
 6.1 Pull Information From Database
 6.2 Insert Information To Database
   6.2.1 Have csv file upload to Database
@@ -59,19 +79,25 @@ Content
   6.3.1 Updated Location
   6.3.2 Write Asset Off
 
-*****Home Page*****
-7.1 JavaScript Current Time
-7.2 Session Welcome, F.Name (F.Name From Database)
+****************************
+*        Home Page         *
+****************************
+7.1 JavaScript Current Time [DONE]
+7.2 Session Welcome, F.Name (F.Name From Database) [DONE]
 7.3 Most Recent New Job Request (Pull the 3 newest Jobs from Database)
 7.4 Most Recent closed Job Request (Pull the 3 closed Jobs from Database)
 
-******Security Issue******
+****************************
+*      Security Issue      *
+****************************
 ISSUE 1(SOLUTION NEED) {fixed check user access problem 1 for solution}
 User can logout but can use the go back button on the browser to see other pages that where open when the user was logged in.
 * Possible Solution
     * using an if statement to on every webpage to check UserStatus, if 0 go back to index.php, other way upload.
 
-******Solution******
+****************************
+*         Solution         *
+****************************
 
 ********************************
 *    User access problem 1     *

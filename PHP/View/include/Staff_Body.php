@@ -1,9 +1,9 @@
-<div class="jumbotron">
+	<div class="jumbotron">
 		<div class="container">
-			<h1>Welcome, Staff</h1>
+			<h1>Welcome, <?php echo $_SESSION['FName']; ?></h1>
 			<h2>Stocktake Managment System</h2>
 			<p>Current Time:
-				<span class="clock">12:50:00 PM</span>
+				<span class="clock" id="time"></span>
 			</p>
 		</div>
 	</div>

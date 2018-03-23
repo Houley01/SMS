@@ -1,9 +1,9 @@
-<div class="jumbotron">
+	<div class="jumbotron">
 		<div class="container">
-			<h1>Welcome, Ethan</h1>
+			<h1>Welcome, <?php echo $_SESSION['FName']; ?></h1>
 			<h2>Stocktake Managment System</h2>
 			<p>Current Time:
-				<span class="clock">12:50:00 PM</span>
+				<span class="clock" id="time"></span>
 			</p>
 		</div>
 	</div>
@@ -13,12 +13,12 @@
 			<h2 class="heading">Most Recent Job Request</h2>
 			<div class="col-md-4">
 				<!-- TITTLE -->
-				<h2>Job Title</h2>
+				<h2>JobTitle</h2>
 				<!-- Location-->
 				<h3>Location</h3>
 				<!--Job Description Heading -->
-				<h3>Description Of The Job Request</h3>
-				<!-- Job Description -->
+				<h3>Quick Summary</h3>
+				<!-- Quick Summary -->
 				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
 				<!-- Link To Job Form -->
 				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
