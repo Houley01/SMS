@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2018 at 04:30 AM
+-- Generation Time: Mar 26, 2018 at 09:59 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -114,7 +114,7 @@ CREATE TABLE `job` (
   `Broken_Keyboard` varchar(255) DEFAULT NULL,
   `Broken_Screen` varchar(255) DEFAULT NULL,
   `ExtraInfo` text,
-  `JobStatus` varchar(5) NOT NULL DEFAULT '0',
+  `JobStatusID` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `PartsUsed` varchar(255) DEFAULT NULL,
   `DateComplete` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -123,10 +123,30 @@ CREATE TABLE `job` (
 -- Dumping data for table `job`
 --
 
-INSERT INTO `job` (`JobID`, `DateLogged`, `UserID`, `RoomID`, `AssetID`, `Broken_Mouse`, `Broken_Keyboard`, `Broken_Screen`, `ExtraInfo`, `JobStatus`, `PartsUsed`, `DateComplete`) VALUES
-(1, '2018-03-26 01:42:58', 2, 1, NULL, '1', '1', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL),
-(2, '2018-03-26 01:53:31', 2, 4, NULL, '1', '1', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL),
-(3, '2018-03-26 01:54:10', 2, 5, NULL, '1', '2', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL);
+INSERT INTO `job` (`JobID`, `DateLogged`, `UserID`, `RoomID`, `AssetID`, `Broken_Mouse`, `Broken_Keyboard`, `Broken_Screen`, `ExtraInfo`, `JobStatusID`, `PartsUsed`, `DateComplete`) VALUES
+(1, '2018-03-26 04:48:02', 2, 1, NULL, '1', '1', '1', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
+(2, '2018-03-26 04:48:22', 2, 3, NULL, '5', '5', '5', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
+(3, '2018-03-26 04:48:35', 2, 26, NULL, '2', '5', '', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
+(6, '2018-03-26 04:49:41', 2, 38, NULL, '1', '1', '1', 'Student has used a hammer to break on the desktop', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobstatus`
+--
+
+CREATE TABLE `jobstatus` (
+  `JobStatusID` int(10) UNSIGNED NOT NULL,
+  `JobStatusName` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobstatus`
+--
+
+INSERT INTO `jobstatus` (`JobStatusID`, `JobStatusName`) VALUES
+(1, 'Open'),
+(2, 'Close');
 
 -- --------------------------------------------------------
 
@@ -314,7 +334,14 @@ ALTER TABLE `job`
   ADD PRIMARY KEY (`JobID`),
   ADD KEY `FK_UserID#1` (`UserID`),
   ADD KEY `FK_RoomID#1` (`RoomID`),
-  ADD KEY `FK_AssetID#1` (`AssetID`);
+  ADD KEY `FK_AssetID#1` (`AssetID`),
+  ADD KEY `FK_JobStatusID#1` (`JobStatusID`);
+
+--
+-- Indexes for table `jobstatus`
+--
+ALTER TABLE `jobstatus`
+  ADD PRIMARY KEY (`JobStatusID`);
 
 --
 -- Indexes for table `rooms`
@@ -349,7 +376,13 @@ ALTER TABLE `building`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `jobstatus`
+--
+ALTER TABLE `jobstatus`
+  MODIFY `JobStatusID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -378,6 +411,7 @@ ALTER TABLE `asset`
 --
 ALTER TABLE `job`
   ADD CONSTRAINT `FK_AssetID#1` FOREIGN KEY (`AssetID`) REFERENCES `asset` (`AssetID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_JobStatusID#1` FOREIGN KEY (`JobStatusID`) REFERENCES `jobstatus` (`JobStatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_RoomID#1` FOREIGN KEY (`RoomID`) REFERENCES `rooms` (`RoomID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_UserID#1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
