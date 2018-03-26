@@ -68,8 +68,14 @@
         </tr>
       </thead>
       <tbody>
+			<!--
+				JobID, DataLogged, UserID, RoomID, Broken_Mouse, Broken_Keyboard, Broken_Screen, ExtraInfo, JobStatus, PartsUsed, DateComplete
+
+					SELECT * FROM job INNER JOIN rooms ON job.RoomID = rooms.RoomID;
+			-->
+
         <?php
-        $JobsLogged_MySQL = "SELECT * FROM `job`;";
+        $JobsLogged_MySQL = "SELECT * FROM job INNER JOIN rooms ON job.RoomID = rooms.RoomID INNER JOIN building ON rooms.BuildingID = building.BuildingID";
         $conn = dbConnect();
       	$stmt = $conn->prepare($JobsLogged_MySQL);
       	$stmt->execute();
@@ -81,7 +87,7 @@
 
           echo "<tr>";
           echo '<th scope="row"> ' . $result[$loop]['JobID'] . ' </th>';
-          echo '<td>' . $result[$loop]['RoomID'] . '</td>';
+          echo '<td>'. $result[$loop]['BuildingName'] . ' - Room ' . $result[$loop]['RoomName'] . '</td>';
           echo '<td>' . $result[$loop]['Broken_Mouse'] . ' Mouse</td>';
           echo '<td>' . $result[$loop]['Broken_Keyboard'] . ' Keyboard</td>';
           echo '<td>' . $result[$loop]['Broken_Screen'] . ' Screens</td>';

@@ -3,7 +3,7 @@
 			<h1>Please Login To View This Page</h1>
 			<h2>Stocktake Managment System</h2>
 			<p>Current Time:
-				<span class="clock">12:50:00 PM</span>
+				<span class="clock" id="time"></span>
 			</p>
 		</div>
 		<div class="container">

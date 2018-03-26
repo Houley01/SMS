@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2018 at 08:41 AM
+-- Generation Time: Mar 26, 2018 at 04:30 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -31,12 +31,44 @@ SET time_zone = "+00:00";
 CREATE TABLE `asset` (
   `AssetID` int(10) UNSIGNED NOT NULL,
   `Brand` varchar(25) NOT NULL,
+  `Type` varchar(255) DEFAULT NULL,
   `Model` varchar(25) NOT NULL,
   `Serial_Number` varchar(255) NOT NULL,
   `DateIntroduced` date NOT NULL,
   `DateWrittenOff` date DEFAULT NULL,
-  `RoomID` int(10) UNSIGNED NOT NULL
+  `RoomID` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `asset`
+--
+
+INSERT INTO `asset` (`AssetID`, `Brand`, `Type`, `Model`, `Serial_Number`, `DateIntroduced`, `DateWrittenOff`, `RoomID`) VALUES
+(10001001, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-001', '2015-05-11', NULL, 9),
+(10001002, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-002', '2015-05-11', NULL, 121),
+(10001003, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-003', '2015-05-11', NULL, 120),
+(10001004, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-004', '2015-05-11', NULL, 119),
+(10001005, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-005', '2015-05-11', NULL, 118),
+(10001006, 'Lenovo', 'Desktop', 'V520s', 'LV-001', '2015-10-11', NULL, 117),
+(10001007, 'Lenovo', 'Desktop', 'V520s', 'LV-002', '2015-10-11', NULL, 116),
+(10001008, 'Lenovo', 'Desktop', 'V520s', 'LV-003', '2015-10-11', NULL, 115),
+(10001009, 'Lenovo', 'Laptop', 'e11x', 'e11x-aaa', '2012-01-30', NULL, 114),
+(10001010, 'Lenovo', 'Laptop', 'e11x', 'e11x-aab', '2012-01-30', NULL, 113),
+(10001011, 'HP', 'Laptop', 'EliteBook 1037', 'eleitebook-001', '2018-01-01', NULL, 25),
+(10001012, 'HP', 'Laptop', 'EliteBook 1038', 'eleitebook-002', '2018-01-01', NULL, 44),
+(10001013, 'HP', 'Laptop', 'EliteBook 1039', 'eleitebook-003', '2018-01-01', NULL, 60),
+(10001014, 'HP', 'Laptop', 'EliteBook 1040', 'eleitebook-004', '2018-01-01', NULL, 70),
+(10001015, 'HP', 'Laptop', 'EliteBook 1041', 'eleitebook-005', '2018-01-01', NULL, 80),
+(10001016, 'Acer', 'Desktop', 'AXC-230', 'acer-a01', '2018-04-21', NULL, 1),
+(10001017, 'Acer', 'Desktop', 'AXC-230', 'acer-a02', '2018-04-21', NULL, 1),
+(10001018, 'Acer', 'Desktop', 'AXC-230', 'acer-a03', '2018-04-21', NULL, 1),
+(10001019, 'Acer', 'Laptop', 'Aspire E5', 'acer-z01', '2018-04-21', NULL, 7),
+(10001020, 'Acer', 'Laptop', 'Aspire E6', 'acer-z02', '2018-04-21', NULL, 7),
+(10001021, 'Hitachi', 'Projector', 'Upside-down', 'ud-001', '2010-07-09', NULL, 1),
+(10001022, 'Hitachi', 'Projector', 'Upside-down', 'ud-002', '2010-07-09', NULL, 3),
+(10001023, 'Hitachi', 'Projector', 'Upside-down', 'ud-003', '2010-07-09', NULL, 22),
+(10001024, 'Hitachi', 'Projector', 'Upside-down', 'ud-004', '2010-07-09', NULL, 23),
+(10001025, 'Hitachi', 'Projector', 'Upside-down', 'ud-005', '2010-07-09', NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -74,14 +106,27 @@ INSERT INTO `building` (`BuildingID`, `BuildingName`) VALUES
 
 CREATE TABLE `job` (
   `JobID` int(10) UNSIGNED NOT NULL,
-  `DateLogged` date NOT NULL,
+  `DateLogged` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UserID` int(10) UNSIGNED NOT NULL,
   `RoomID` int(10) UNSIGNED NOT NULL,
-  `AssetID` int(10) UNSIGNED NOT NULL,
-  `JobStatus` int(3) NOT NULL DEFAULT '0',
+  `AssetID` int(10) UNSIGNED DEFAULT NULL,
+  `Broken_Mouse` varchar(255) DEFAULT NULL,
+  `Broken_Keyboard` varchar(255) DEFAULT NULL,
+  `Broken_Screen` varchar(255) DEFAULT NULL,
+  `ExtraInfo` text,
+  `JobStatus` varchar(5) NOT NULL DEFAULT '0',
   `PartsUsed` varchar(255) DEFAULT NULL,
   `DateComplete` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`JobID`, `DateLogged`, `UserID`, `RoomID`, `AssetID`, `Broken_Mouse`, `Broken_Keyboard`, `Broken_Screen`, `ExtraInfo`, `JobStatus`, `PartsUsed`, `DateComplete`) VALUES
+(1, '2018-03-26 01:42:58', 2, 1, NULL, '1', '1', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL),
+(2, '2018-03-26 01:53:31', 2, 4, NULL, '1', '1', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL),
+(3, '2018-03-26 01:54:10', 2, 5, NULL, '1', '2', '1', 'Student has used a pen to break keyboard, mouse and the pen is inside the screen.', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -267,9 +312,9 @@ ALTER TABLE `building`
 --
 ALTER TABLE `job`
   ADD PRIMARY KEY (`JobID`),
-  ADD KEY `FK_Room#1` (`RoomID`) USING BTREE,
-  ADD KEY `FK_AssetID#1` (`AssetID`) USING BTREE,
-  ADD KEY `FK_UserID` (`UserID`) USING BTREE;
+  ADD KEY `FK_UserID#1` (`UserID`),
+  ADD KEY `FK_RoomID#1` (`RoomID`),
+  ADD KEY `FK_AssetID#1` (`AssetID`);
 
 --
 -- Indexes for table `rooms`
@@ -292,7 +337,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `asset`
 --
 ALTER TABLE `asset`
-  MODIFY `AssetID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `AssetID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001026;
 
 --
 -- AUTO_INCREMENT for table `building`
@@ -304,7 +349,7 @@ ALTER TABLE `building`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -332,9 +377,9 @@ ALTER TABLE `asset`
 -- Constraints for table `job`
 --
 ALTER TABLE `job`
-  ADD CONSTRAINT `job_ibfk_1` FOREIGN KEY (`AssetID`) REFERENCES `asset` (`AssetID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `job_ibfk_2` FOREIGN KEY (`RoomID`) REFERENCES `rooms` (`RoomID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `job_ibfk_3` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_AssetID#1` FOREIGN KEY (`AssetID`) REFERENCES `asset` (`AssetID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RoomID#1` FOREIGN KEY (`RoomID`) REFERENCES `rooms` (`RoomID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_UserID#1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `rooms`
