@@ -1,19 +1,7 @@
 <?php
-//every website needs to have this statement in to
-//help protect from people using pages that are
-//not allowed..
-	session_start();
 		include 'include/header.php';
 		include '../Connection.php';
-		switch ($_SESSION['UserStatus']) {
-  		case 2:
-    		include 'include/Admin_Nav.php';
-    		break;
-
-			default:
-				header('location: index.php');
-				break;
-			}
+		include 'include/Admin_Access.php';
 ?>
 <div class="Work_Around_Nav">
   <div class="container">
@@ -83,7 +71,7 @@
         $JobsLogged_MySQL = "SELECT * FROM job
 				INNER JOIN rooms ON job.RoomID = rooms.RoomID
 				INNER JOIN building ON rooms.BuildingID = building.BuildingID
-				INNER JOIN jobstatus ON job.JobStatusID = jobstatus.JobStatusID";
+				INNER JOIN jobstatus ON job.JobStatusID = jobstatus.JobStatusID;";
         $conn = dbConnect();
       	$stmt = $conn->prepare($JobsLogged_MySQL);
       	$stmt->execute();
@@ -100,7 +88,7 @@
           echo '<td>' . $row['Broken_Keyboard'] . ' Keyboard</td>';
           echo '<td>' . $row['Broken_Screen'] . ' Screens</td>';
           echo '<td>' . $row['JobStatusName'] . '</td>';
-          echo '<td><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(' . $row['JobID'] . ')" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View/Updated</button></td>';
+          echo '<td><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View/Updated</button></td>';
           echo "</tr>";
         }
       ?>
@@ -123,13 +111,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title"><button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="JobID">Job ID </h4></h4>
+          <h4 class="modal-title" name="JobNumber" id="JobNumber">Job Number </h4></h4>
         </div>
         <div class="modal-body">
-					<form class="" action="#" method="post">
+					<form class="" action="../Model/JobUpdate.php" method="POST">
+						<input type="text" hidden name="JobID" id="JobID" value="">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Name Of Reporter</span>
-              <input type="text" disabled class="form-control" aria-describedby="basic-addon1" id="Name_Of_Reporter" name="Name_Of_Reporter">
+              <input type="text" disabled class="form-control" aria-describedby="basic-addon1" id="UserID" name="UserID">
             </div>
 						<div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Date Submitted</span>
@@ -137,7 +126,7 @@
             </div>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Location</span>
-              <input type="text" disabled class="form-control" aria-describedby="basic-addon1" id="Location" name="Location">
+              <input type="text" disabled class="form-control" aria-describedby="basic-addon1" id="RoomID" name="RoomID">
             </div>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">AssetID</span>
@@ -174,10 +163,12 @@
             </div>
         </div>
         <div class="modal-footer">
-					<button type="submit" name="button" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Updated </button>
-					<button type="submit" name="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Close Job </button>
-					</form>
-					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+					<button type="submit" name="button" class="btn btn-default" id="UpdateJob"><span class="glyphicon glyphicon-ok" onclick="UpdateJob()"></span> Updated Job Information</button>
+
+					<button type="button" name="button" class="btn btn-default" id="CloseJob"><span class="glyphicon glyphicon-thumbs-up"></span> Close Job </button>
+				</form>
+
+					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
         </div>
       </div>
 

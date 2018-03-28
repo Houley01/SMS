@@ -23,26 +23,32 @@ function GetRoomInfo(val) {
 }
 
 function OpenJob(elem) {
-  var reqURL = "../Model/JobUpdate.php?OpenJob=" + elem.value;
-  $.ajax({
+  var reqURL = "../Model/JobGet.php?OpenJob=" + elem.value;
+  var request = $.ajax({
     url: reqURL,
     method: "GET",
-    dataType: "json",
+    dataType: "json"
   });
-  request.done(function( msg ) {
-    console.table(msg);
+  request.done(function(JobInfo) {
+    console.log('Pass');
+    console.table(JobInfo);
+    JobID.value = JobInfo[0].JobID;
+    UserID.value = JobInfo[0]["F.Name"] + ' ' + JobInfo[0]["L.Name"]; // Due to the data in the repones json puts the name of the varable into a [""]
+    DateLogged.value = JobInfo[0].DateLogged;
+    RoomID.value = JobInfo[0].BuildingName + ' - Room ' + JobInfo[0].RoomName;
+    AssetID.value = JobInfo[0].AssetID;
+    Broken_Mouse.value = JobInfo[0].Broken_Mouse;
+    Broken_Keyboard.value = JobInfo[0].Broken_Keyboard;
+    Broken_Screen.value = JobInfo[0].Broken_Screen;
+    ExtraInfo.value = JobInfo[0].ExtraInfo;
+    JobStatusID.value = JobInfo[0].JobStatusName;
+    PartsUsed.value = JobInfo[0].PartsUsed;
+    DateComplete.value = JobInfo[0].DateComplete;
 
-    JobID.text = msg.JobID;
-    Name_Of_Reporter.value = msg.UserID;
-    DateLogged.value = msg.DateLogged;
-    RoomID.value = msg.RoomID;
-    AssetID.value = msg.AssetID;
-    Broken_Mouse.value = msg.Broken_Mouse;
-    Broken_Keyboard.value = msg.Broken_Keyboard;
-    Broken_Screen.value = msg.Broken_Screen;
-    ExtraInfo.value = msg.ExtraInfo;
-    PartsUsed.value = msg.PartsUsed;
-    JobStatusID.value = msg.JobStatusID;
-    DateComplete.value = msg.DateComplete;
+  });
+  request.fail(function(err) {
+    console.log(err);
+    console.log('An error occured');
+
   });
 }
