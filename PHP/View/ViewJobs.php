@@ -101,6 +101,7 @@
   <?php
     include 'include/footer.php';
   ?>
+
 </div>
 
   <!-- Modal -->
@@ -114,7 +115,7 @@
           <h4 class="modal-title" name="JobNumber" id="JobNumber">Job Number </h4></h4>
         </div>
         <div class="modal-body">
-					<form class="" action="../Model/JobUpdate.php" method="POST">
+					<form class="" id="ViewJob" action="../Model/JobUpdate.php" method="POST">
 						<input type="text" hidden name="JobID" id="JobID" value="">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Name Of Reporter</span>
@@ -162,11 +163,11 @@
               <input type="text" disabled class="form-control" aria-describedby="basic-addon1" name="DateComplete" id="DateComplete">
             </div>
         </div>
+			</form>
         <div class="modal-footer">
-					<button type="submit" name="button" class="btn btn-default" id="UpdateJob"><span class="glyphicon glyphicon-ok" onclick="UpdateJob()"></span> Updated Job Information</button>
+					<button type="button" name="button" class="btn btn-default" id="UpdateJob"><span class="glyphicon glyphicon-ok" ></span> Updated Job Information</button>
 
 					<button type="button" name="button" class="btn btn-default" id="CloseJob"><span class="glyphicon glyphicon-thumbs-up"></span> Close Job </button>
-				</form>
 
 					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
         </div>

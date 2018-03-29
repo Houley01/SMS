@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.8
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2018 at 09:59 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Mar 29, 2018 at 03:29 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -116,7 +116,7 @@ CREATE TABLE `job` (
   `ExtraInfo` text,
   `JobStatusID` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `PartsUsed` varchar(255) DEFAULT NULL,
-  `DateComplete` date DEFAULT NULL
+  `DateComplete` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -124,10 +124,11 @@ CREATE TABLE `job` (
 --
 
 INSERT INTO `job` (`JobID`, `DateLogged`, `UserID`, `RoomID`, `AssetID`, `Broken_Mouse`, `Broken_Keyboard`, `Broken_Screen`, `ExtraInfo`, `JobStatusID`, `PartsUsed`, `DateComplete`) VALUES
-(1, '2018-03-26 04:48:02', 2, 1, NULL, '1', '1', '1', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
+(1, '2018-03-26 04:48:02', 2, 1, 10001004, '2', '2', '2', 'Keyboard was snapped in half when the student could not get his Website to WORK.', 2, 'Ram, Cleaned Case,', '0000-00-00 00:00:00'),
 (2, '2018-03-26 04:48:22', 2, 3, NULL, '5', '5', '5', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
 (3, '2018-03-26 04:48:35', 2, 26, NULL, '2', '5', '', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
-(6, '2018-03-26 04:49:41', 2, 38, NULL, '1', '1', '1', 'Student has used a hammer to break on the desktop', 1, NULL, NULL);
+(6, '2018-03-26 04:49:41', 2, 38, NULL, '1', '1', '1', 'Student has used a hammer to break on the desktop', 1, NULL, NULL),
+(7, '2018-03-29 13:07:52', 2, 19, NULL, '0', '1', '0', 'Water was spilled on the keyboard,', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -376,7 +377,7 @@ ALTER TABLE `building`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `jobstatus`

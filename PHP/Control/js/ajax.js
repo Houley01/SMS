@@ -9,11 +9,7 @@ function GetRoomInfo(val) {
       $.each(result, function(index, val) {
         $('#RoomNumber').append('<option value="' + val.RoomID + '" name="' + val.RoomName + '">' + val.RoomName + '</option>');
       });
-      ////////////////////////////////////////////////////////////
-      //                                                        //
-      //  BRENDAN WENT THROUGH 3.5 HOURS OF HELL FOR THIS CODE  //
-      //                                                        //
-      ////////////////////////////////////////////////////////////
+
     },
     error(err) {
       console.log(err);
@@ -52,3 +48,29 @@ function OpenJob(elem) {
 
   });
 }
+
+$("#UpdateJob").click(
+  function UpdatedJob() {
+    $.ajax({
+
+      url: '../Model/JobUpdate.php',
+      type: 'POST',
+      data: $("#ViewJob").serialize(),
+      success: function(result) {
+        alert('Update Was Successful');
+      }
+    });
+  });
+
+$("#CloseJob").click(
+  function CloseJob() {
+    $.ajax({
+
+      url: '../Model/JobClose.php',
+      type: 'POST',
+      data: $("#ViewJob").serialize(),
+      success: function(result) {
+        alert('Update Was Successful');
+      }
+    });
+  });

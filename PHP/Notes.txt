@@ -26,7 +26,7 @@ Content
 2.1 Populate Database [3 out of 5]
   2.1.1 TABLE Asset     [Upload CSV]
   2.1.2 TABLE Building  [DONE]
-  2.1.3 TABLE Job       [Write CSV And Upload]
+  2.1.3 TABLE Job       [USING JOB FORM]
   2.1.4 TABLE Rooms     [DONE]
   2.1.5 TABLE User      [DONE]
 2.2 Communicates To Database [DONE]
@@ -38,6 +38,7 @@ Content
 3.1 Login Page [DONE]
 3.2 Update Session Information [DONE]
 3.3 Logout Code [DONE cause security Problem] (unset UserStatus,) {Problem fixed see soloution @ user access problem 1}
+3.4 Change input type from "text" to "password"
 
 ****************************
 *         Job Form         *
@@ -57,14 +58,15 @@ Content
 5.1 View Jobs (Pull Information From Database into a table)
   5.1.1 Pull Information [DONE]
   5.1.2 Change Numbers into readable Words
-    5.1.2.1 Location
-    5.1.2.2 Job Status
+    5.1.2.1 Location[DONE]
+    5.1.2.2 Job Status[DONE]
 5.2 View And Update Button
-  5.2.1 Open Model With Information From DATABASE
-  5.2.2 Update SQL script for database.
-  5.2.3 Close Job Within Modal
-
-5.3 Updated Jobs (Updated Database)
+  5.2.1 Open Model With Information From DATABASE[DONE]
+  5.2.2 Update SQL script for database.[DONE]
+  5.2.3 Close Job Within Modal [DONE]
+  5.2.4 Write Ajax to do the function.
+  5.2.5 Write an Alert or an Alert on the website
+5.3 Updated Jobs (Updated Database) [DONE]
 5.4 Close Jobs  (change Null to todays date, when the job is finished)
 5.5
 
@@ -73,7 +75,7 @@ Content
 ****************************
 6.1 Pull Information From Database
 6.2 Insert Information To Database
-  6.2.1 Have csv file upload to Database
+  6.2.1 Have csv file upload to Database [DONE]
   6.2.2 Have CSV file add to the write table (Write query)
 6.3 Update Information From Database
   6.3.1 Updated Location
@@ -95,12 +97,22 @@ User can logout but can use the go back button on the browser to see other pages
 * Possible Solution
     * using an if statement to on every webpage to check UserStatus, if 0 go back to index.php, other way upload.
 
+
+ISSUE 2 (Admin Only Area)
+  logged in user can access admin pages, (if the URL is know)
+* Possible Solution
+    * Us an switch statement to only allow user with a certain UserStatus
+
+ISSUE 3
+Login
+Password Sections displays password, Password Needs to be hased.
+
 ****************************
 *         Solution         *
 ****************************
 
 ********************************
-*    User access problem 1     *
+*     User access ISSUE 1      *
 ********************************
 Solution by using switch statement. e.g.
 switch ($_SESSION['UserStatus']) {
@@ -116,5 +128,24 @@ switch ($_SESSION['UserStatus']) {
 }
 Meaning if a user does not have a recognised  'UserStatus'
 ********************************
-* END OF USER ACCESS PROBLEM 1 *
+*       END OF ISSUE 1         *
+********************************
+
+********************************
+*   Admin Only Pages ISSUE 2   *
+********************************
+Create a PHP Files called Admin_Access.PHP
+which includes
+
+switch ($_SESSION['UserStatus']) {
+
+  case 2:
+    include 'include/Admin_Nav.php';
+    break;
+
+  default:
+    header('location: index.php');
+    break;
+********************************
+*       END OF ISSUE 2         *
 ********************************
