@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2018 at 03:29 PM
+-- Generation Time: Mar 30, 2018 at 07:01 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -44,7 +44,7 @@ CREATE TABLE `asset` (
 --
 
 INSERT INTO `asset` (`AssetID`, `Brand`, `Type`, `Model`, `Serial_Number`, `DateIntroduced`, `DateWrittenOff`, `RoomID`) VALUES
-(10001001, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-001', '2015-05-11', NULL, 9),
+(10001001, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-001', '2015-05-11', '0000-00-00', 9),
 (10001002, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-002', '2015-05-11', NULL, 121),
 (10001003, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-003', '2015-05-11', NULL, 120),
 (10001004, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-004', '2015-05-11', NULL, 119),

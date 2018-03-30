@@ -74,3 +74,43 @@ $("#CloseJob").click(
       }
     });
   });
+
+
+function OpenAsset(elem) {
+  var reqURL = "../Model/AssetGet.php?OpenAsset=" + elem.value;
+  var request = $.ajax({
+    url: reqURL,
+    method: "GET",
+    dataType: "json"
+  });
+  request.done(function(AssetInfo) {
+    console.log('Pass');
+    console.log(AssetInfo);
+    Type.value = AssetInfo[0].Type;
+    AssetID.value = AssetInfo[0].AssetID;
+    Brand.value = AssetInfo[0].Brand;
+    Model.value = AssetInfo[0].Model;
+    Serial_Number.value = AssetInfo[0].Serial_Number;
+    LocationID.value = AssetInfo[0].BuildingName + ' - Room ' + AssetInfo[0].RoomName;
+    DateIntroduced.value = AssetInfo[0].DateIntroduced;
+    DateWrittenOff.value = AssetInfo[0].DateWrittenOff;
+
+  });
+  request.fail(function(err) {
+    console.log(err);
+    console.log('An error occured');
+
+  });
+}
+$("#UpdateAsset").click(
+  function UpdatedAsset() {
+    $.ajax({
+
+      url: '../Model/AssetUpdate.php',
+      type: 'POST',
+      data: $("#ViewAsset").serialize(),
+      success: function(result) {
+        alert('Update Was Successful');
+      }
+    });
+  });
