@@ -9,16 +9,15 @@
 <div class="Work_Around_Nav">
   <div class="container">
     <h1>Asset Management</h1>
-    <p>Current Time:
-      <span class="clock" id="time"></span>
-    </p>
+    <?php include 'include/clock.php'; ?>
   </div>
   <div class="container">
     <div class="row">
-      <div class="row_heading">
-        <h3>Filter Rooms</h3>
-      </div>
-      <div class="input-group">
+			<div class="Phone_And_Tablet">
+      	<div class="row_heading">
+        	<h3>Filter Rooms</h3>
+      	</div>
+      	<div class="input-group">
 
         <span class="input-group-addon" id="basic-addon1">Building</span>
 				<select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
@@ -36,7 +35,8 @@
 					}
 					echo "</select>";
 					?>
-
+				</div>
+				<div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Type Of Device</span>
           <select class="form-control" name="Displayed" id="Displayed">
             <option disabled selected>What Type Of Device Are You Looking For </option>
@@ -47,13 +47,13 @@
 						$stmt->execute();
 						$device = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 						for($loop = 0; $loop < count($device); $loop++) {
 							echo 	'<option value="' . $device[$loop]['Type'] . '" class="' . $device[$loop]['Type'] . '" Name="TypeOfDevice"> ' . $device[$loop]['Type'] . '</option>';
 						}
-
           	echo	'</select>';
 						?>
+					</div>
+					<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">Limit Number Of Jobs</span>
 					<select class="form-control" name="Displayed" id="Displayed">
 						<option disabled selected>Limit Number Of Jobs Displayed </option>
@@ -65,20 +65,59 @@
 						<option value="">30</option>
 					</select>
       </div>
+		</div>
+		<!-- Laptop screen plus  -->
+		<div class="No_Phone No_Tablet">
+				<div class="row_heading">
+			 <h3>Filter Rooms</h3>
+		 </div>
+		 <div class="input-group">
+
+			 <span class="input-group-addon" id="basic-addon1">Building</span>
+			 <select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
+				 <option disabled selected>Please Select What Building </option>
+				 <?php
+				 for ($loop = 0; $loop < count($result); $loop++) {
+					 echo '<option value="' . $result[$loop]['BuildingID'] . '" class="' . $result[$loop]['BuildingName'] . '" Name="Building"> ' . $result[$loop]['BuildingName'] . '</option>';
+				 }
+				 echo "</select>";
+				 ?>
+
+				 <span class="input-group-addon" id="basic-addon1">Type Of Device</span>
+				 <select class="form-control" name="Displayed" id="Displayed">
+					 <option disabled selected>What Type Of Device Are You Looking For </option>
+					 <?php
+					 for($loop = 0; $loop < count($device); $loop++) {
+						 echo 	'<option value="' . $device[$loop]['Type'] . '" class="' . $device[$loop]['Type'] . '" Name="TypeOfDevice"> ' . $device[$loop]['Type'] . '</option>';
+					 }
+					 echo	'</select>';
+					 ?>
+				 <span class="input-group-addon" id="basic-addon1">Limit Number Of Jobs</span>
+				 <select class="form-control" name="Displayed" id="Displayed">
+					 <option disabled selected>Limit Number Of Jobs Displayed </option>
+					 <option value="">5</option>
+					 <option value="">10</option>
+					 <option value="">15</option>
+					 <option value="">20</option>
+					 <option value="">25</option>
+					 <option value="">30</option>
+				 </select>
+		 </div>
+		 </div>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Asset Number</th>
-          <th>Brand</th>
-          <th>Model</th>
-          <th>Location</th>
-          <th>Date Introduced</th>
-          <th>Date Written Off</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-2 col-xs-4 Heading_Table">Asset Number</div>
+          <div class="col-md-2 col-xs-3 Heading_Table">Brand</div>
+          <div class="col-md-3 No_Phone No_Tablet Heading_Table">Model</div>
+          <div class="col-md-3 col-xs-3 Heading_Table">Location</div>
+          <!-- <div class="col-md-2">Date Introduced</div>
+          <div class="col-md-2">Date Written Off</div> -->
+          <div class="col-md-2 col-xs-2 Heading_Table">Edit</div>
+      </div>
+      <!-- <div class="Body_Table"> -->
+
+
 				<!-- MUST DO A SORT THROUGHT JOBS FUNCTION -->
       <?php
         $JobsLogged_MySQL = "SELECT * FROM asset
@@ -93,19 +132,19 @@
         // die();
         foreach($result as $row) {
 
-          echo "<tr>";
-          echo '<th scope="row"> ' . $row['AssetID'] . ' </th>';
-          echo '<td>' . $row['Brand'] . '</td>';
-          echo '<td>' . $row['Model'] . '</td>';
-					echo '<td>'. $row['BuildingName'] . ' - ' . $row['RoomName'] . '</td>';
-          echo '<td>' . $row['DateIntroduced'] . '</td>';
-          echo '<td>' . $row['DateWrittenOff'] . '</td>';
-    			echo '<td><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenAsset(this)" value="'. $row['AssetID'] .'" data-toggle="modal" data-target="#AssetInfo">Edit Details</button></td>';
-          echo "</tr>";
+          echo '<div class="Row_Table row">';
+          echo '<div class="col-md-2 col-xs-4"> ' . $row['AssetID'] . ' </div>';
+          echo '<div class="col-md-2 col-xs-3">' . $row['Brand'] . '</div>';
+          echo '<div class="col-md-3 No_Phone No_Tablet">' . $row['Model'] . '</div>';
+					echo '<div class="col-md-3 col-xs-3">'. $row['BuildingName'] . ' - ' . $row['RoomName'] . '</div>';
+        //  echo '<div class="col-md-2">' . $row['DateIntroduced'] . '</div>';
+        //  echo '<div class="col-md-2">' . $row['DateWrittenOff'] . '</div>';
+    			echo '<div class="col-md-2 col-xs-2"><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenAsset(this)" value="'. $row['AssetID'] .'" data-toggle="modal" data-target="#AssetInfo">Detail</button></div>';
+          echo "</div>";
         }
       ?>
-      </tbody>
-    </table>
+      <!-- </div> -->
+    </div>
 
   </div>
 

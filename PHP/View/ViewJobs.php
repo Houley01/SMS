@@ -6,16 +6,58 @@
 <div class="Work_Around_Nav">
   <div class="container">
     <h1>View Jobs</h1>
-    <p>Current Time:
-      <span class="clock" id="time"></span>
-    </p>
+    <?php include 'include/clock.php'; ?>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="row_heading">
-        <h3>Filter Jobs</h3>
-      </div>
-      <div class="input-group">
+	<div class="container">
+		<div class="row">
+			<div class="Phone_And_Tablet">
+				<div class="row_heading">
+					<h3>Filter Rooms</h3>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Job Status</span>
+	        <select class="form-control" name="JobStatus" id="JobStatus">
+	          <option disabled selected>Please Select Job Status</option>
+	          <option value="1">Open</option>
+	          <option value="2">Closed</option>
+	        </select>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Building</span>
+			 <select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
+				 <option disabled selected>Please Select What Building </option>
+				 <?php
+				 $BuildingOptions = "SELECT * FROM `building`;";
+				 $conn = dbConnect();
+				 $stmt = $conn->prepare($BuildingOptions);
+				 $stmt->execute();
+				 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				 for ($loop = 0; $loop < count($result); $loop++) {
+					 echo '<option value="' . $result[$loop]['BuildingID'] . '" class="' . $result[$loop]['BuildingName'] . '" Name="Building"> ' . $result[$loop]['BuildingName'] . '</option>';
+				 }
+				 echo "</select>";
+				 ?>
+
+					</div>
+					<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Limit Number Of Jobs</span>
+					<select class="form-control" name="Displayed" id="Displayed">
+						<option disabled selected>Limit Number Of Jobs Displayed </option>
+						<option value="">5</option>
+						<option value="">10</option>
+						<option value="">15</option>
+						<option value="">20</option>
+						<option value="">25</option>
+						<option value="">30</option>
+					</select>
+			</div>
+		</div>
+		<!-- Laptop screen plus  -->
+		<div class="No_Phone No_Tablet">
+				<div class="row_heading">
+			 <h3>Filter Rooms</h3>
+		 </div>
+		 <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Job Status</span>
         <select class="form-control" name="JobStatus" id="JobStatus">
           <option disabled selected>Please Select Job Status</option>
@@ -27,13 +69,11 @@
 				<select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
 					<option disabled selected>Please Select What Building </option>
 					<?php
-
 					$BuildingOptions = "SELECT * FROM `building`;";
 					$conn = dbConnect();
 					$stmt = $conn->prepare($BuildingOptions);
 					$stmt->execute();
 					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 					for ($loop = 0; $loop < count($result); $loop++) {
 						echo '<option value="' . $result[$loop]['BuildingID'] . '" class="' . $result[$loop]['BuildingName'] . '" Name="Building"> ' . $result[$loop]['BuildingName'] . '</option>';
 					}
@@ -51,21 +91,22 @@
             <option value="">30</option>
           </select>
 
+		 </div>
+		 </div>
+		</div>
+    <div class="container">
+      <div class="row">
+					<div class="col-md-2 col-xs-3 Heading_Table">Job Number</div>
+					<div class="col-md-2 col-xs-3 Heading_Table">Location</div>
+					<div class="col-md-1 No_Phone No_Tablet Heading_Table">Mouse</div>
+					<div class="col-md-1 No_Phone No_Tablet Heading_Table">Keyboard</div>
+					<div class="col-md-2 No_Phone No_Tablet Heading_Table">Screen</div>
+					<div class="col-md-2 col-xs-3 Heading_Table">Job Status</div>
+					<div class="col-md-2 col-xs-2 Heading_Table">View</div>
+
       </div>
-    </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Job Number</th>
-          <th>Location</th>
-          <th>Mouse</th>
-          <th>Keyboard</th>
-          <th>Screen</th>
-          <th>Job Status</th>
-          <th>View</th>
-        </tr>
-      </thead>
-      <tbody>
+
+      <div>
 				<!-- MUST DO A SORT THROUGHT JOBS FUNCTION -->
       <?php
         $JobsLogged_MySQL = "SELECT * FROM job
@@ -81,19 +122,20 @@
         // die();
         foreach($result as $row) {
 
-          echo "<tr>";
-          echo '<th scope="row"> ' . $row['JobID'] . ' </th>';
-          echo '<td>'. $row['BuildingName'] . ' - Room ' . $row['RoomName'] . '</td>';
-          echo '<td>' . $row['Broken_Mouse'] . ' Mouse</td>';
-          echo '<td>' . $row['Broken_Keyboard'] . ' Keyboard</td>';
-          echo '<td>' . $row['Broken_Screen'] . ' Screens</td>';
-          echo '<td>' . $row['JobStatusName'] . '</td>';
-          echo '<td><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View/Updated</button></td>';
-          echo "</tr>";
+          echo '<div class="Row_Table row">';
+          echo '<div class="col-md-2 col-xs-3"> ' . $row['JobID'] . ' </div>';
+          echo '<div class="col-md-2 col-xs-3">'. $row['BuildingName'] . ' - Room ' . $row['RoomName'] . '</div>';
+          echo '<div class="col-md-1 No_Phone No_Tablet">' . $row['Broken_Mouse'] . ' Mouse</div>';
+          echo '<div class="col-md-1 No_Phone No_Tablet">' . $row['Broken_Keyboard'] . ' Keyboard</div>';
+          echo '<div class="col-md-2 No_Phone No_Tablet">' . $row['Broken_Screen'] . ' Screens</div>';
+          echo '<div class="col-md-2 col-xs-3">' . $row['JobStatusName'] . '</div>';
+          echo '<div class="col-md-2 col-xs-2"><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View</button></div>';
+          echo "</div>";
         }
       ?>
-      </tbody>
-    </table>
+		</div>
+
+	</div>
 
   </div>
 

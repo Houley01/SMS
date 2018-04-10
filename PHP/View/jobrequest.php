@@ -21,9 +21,7 @@
 <div class="Work_Around_Nav">
     <div class="container">
       <h1>Report A Problem</h1>
-      <p>Current Time:
-        <span id="time" class="clock"></span>
-      </p>
+      <?php include 'include/clock.php'; ?>
     </div>
   </div>
   <div class="container">
