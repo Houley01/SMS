@@ -28,7 +28,7 @@
 							</div>
 							<div class="form-group">
 								<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-								<input type="text" class="form-control" name="user_pass" id="user_pass" placeholder="Enter password" value="password">
+								<input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="Enter password" value="password">
 							</div>
 							<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
 						</form>

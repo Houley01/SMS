@@ -7,36 +7,42 @@
 			</p>
 		</div>
 	</div>
-	<div class="container">
-		<!-- Most Recent Jobs -->
-		<div class="row">
-			<h2 class="heading">Most Recent Job Request</h2>
-			<div class="col-md-4">
-				<!-- TITTLE -->
-				<h2>JobTitle</h2>
-				<!-- Location-->
-				<h3>Location</h3>
-				<!--Job Description Heading -->
-				<h3>Quick Summary</h3>
-				<!-- Quick Summary -->
-				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-				<!-- Link To Job Form -->
-				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>Job Request 20/02/2018</h2>
-				<h3>Building: A Room: 25</h3>
-				<h3>Description From The Job Page</h3>
-				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>Job Request 20/02/2018</h2>
-				<h3>Building: A Room: 25</h3>
-				<h3>Description From The Job Page</h3>
-				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-			</div>
+	<?php
+	include '../Connection.php';
+
+		$Most_Recent = "SELECT
+    *	FROM job INNER JOIN rooms ON job.RoomID = rooms.RoomID INNER JOIN building ON rooms.BuildingID = building.BuildingID INNER JOIN jobstatus ON job.JobStatusID = jobstatus.JobStatusID	WHERE job.JobStatusID = 1	ORDER BY job.JobID DESC LIMIT 3;";
+
+			$conn = dbConnect();
+			$stmt = $conn->prepare($Most_Recent);
+			$stmt->execute();
+			$Results_Most_Recent = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			//print_r($Results_Most_Recent);
+			echo '<div class="container">';
+			// Most Recent Jobs
+			echo '<div class="row">';
+			echo '	<h2 class="heading">Most Recent Job Request</h2>';
+			foreach ($Results_Most_Recent as $Results_Most_Recent) {
+			echo '<div class="col-md-4">';
+				 // TITTLE
+			echo '	<h2>Job Number</h2>';
+			echo '<h3>'. $Results_Most_Recent['JobID'] . '</h3>';
+
+				 // Location
+		echo '		<h2>Location</h2>';
+		echo '<h3>'.$Results_Most_Recent["BuildingName"].' - '.$Results_Most_Recent["RoomName"].' </h3>';
+				// Job Description Heading
+		echo '		<h2>Quick Summary</h2>';
+				 // Quick Summary
+			echo '<p> Broken Mouse '.$Results_Most_Recent["Broken_Mouse"].' </p>
+			<p> Broken Keyboard '.$Results_Most_Recent["Broken_Keyboard"].' </p>
+			<p> Broken Screen '.$Results_Most_Recent["Broken_Screen"].' </p>';
+				 // Link To Job Form
+			echo '	<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>';
+			echo '</div>';
+		}
+			?>
 		</div>
 
 		<hr>

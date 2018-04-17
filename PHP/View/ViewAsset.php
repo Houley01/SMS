@@ -130,9 +130,10 @@
 
         // print_r($result);
         // die();
+				$count = 0;
         foreach($result as $row) {
 
-          echo '<div class="Row_Table row">';
+          echo '<div class="Row_Table row" id="'.$count++.'">';
           echo '<div class="col-md-2 col-xs-4"> ' . $row['AssetID'] . ' </div>';
           echo '<div class="col-md-2 col-xs-3">' . $row['Brand'] . '</div>';
           echo '<div class="col-md-3 No_Phone No_Tablet">' . $row['Model'] . '</div>';
