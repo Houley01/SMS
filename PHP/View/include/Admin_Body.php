@@ -26,14 +26,13 @@
 			foreach ($Results_Most_Recent as $Results_Most_Recent) {
 			echo '<div class="col-md-4">';
 				 // TITTLE
-			echo '	<h2>Job Number</h2>';
-			echo '<h3>'. $Results_Most_Recent['JobID'] . '</h3>';
+			echo '	<h3>Job Number <span>#'. $Results_Most_Recent['JobID'] . '</span> </h3>';
 
 				 // Location
 		echo '		<h2>Location</h2>';
-		echo '<h3>'.$Results_Most_Recent["BuildingName"].' - '.$Results_Most_Recent["RoomName"].' </h3>';
+		echo '<p>'.$Results_Most_Recent["BuildingName"].' - '.$Results_Most_Recent["RoomName"].' </p>';
 				// Job Description Heading
-		echo '		<h2>Quick Summary</h2>';
+		echo '		<h3>Quick Summary</h3>';
 				 // Quick Summary
 			echo '<p> Broken Mouse '.$Results_Most_Recent["Broken_Mouse"].' </p>
 			<p> Broken Keyboard '.$Results_Most_Recent["Broken_Keyboard"].' </p>

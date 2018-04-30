@@ -10,11 +10,6 @@
 	<!-- 3RD PARTY FILES -->
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- Local CDN Files -->
-	<!-- Remove this when finished working on the go -->
-	<link rel="stylesheet" href="../Local_CDN/bootstrap/css/bootstrap.min.css">
-	<script src="../Local_CDN/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
-	<script src="../Local_CDN/jquery-3.31.min.js" charset="utf-8"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

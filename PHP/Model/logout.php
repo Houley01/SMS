@@ -5,7 +5,7 @@
     unset($_SESSION['UserID']);
     unset($_SESSION['FName']);
     $_SESSION['UserStatus'] = 0;
-    header('Location: ../view/index.php');
+    header('Location: ../View/index.php');
 
 
 ?>

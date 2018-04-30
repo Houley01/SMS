@@ -53,6 +53,19 @@ footer {
   border-top: 1px solid rgb(221, 221, 221);
 }
 
+/* Loading Sceen for request pages */
+
+#Loading_Screen {
+  visibility: hidden;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba( 255, 255, 255, .8) url('../images/pleasewait.gif') 50% 50% no-repeat;
+}
+
 /* Phone */
 
 @media only screen and (max-width: 768px) {

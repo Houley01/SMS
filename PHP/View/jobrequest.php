@@ -35,7 +35,7 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">Building</span>
-					<select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)">
+					<select class="form-control" name="Building" id="BuildingNumber" onchange="GetRoomInfo(this.value)" required>
 						<option disabled selected>Please Select What Building </option>
 						<?php
 
@@ -59,7 +59,7 @@
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Room Number #</span>
-          <select class="form-control" name="Room" id="RoomNumber">
+          <select class="form-control" name="Room" id="RoomNumber" required>
             <option disabled selected>Please Select What Room #</option>
 					</select>
 				</div>

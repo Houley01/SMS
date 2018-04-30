@@ -25,7 +25,7 @@ function dbConnect()
 }
 
 //sanitise data sent via POST and SEND
-function test_user_input($data) {
+function Clean_User_Input($data) {
 	$data = trim($data);
 	$data= stripslashes($data);
 	$data = htmlspecialchars($data);
