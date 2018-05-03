@@ -1,0 +1,1 @@
+document.getElementById("BrowserInfomartion").HTML = navigator.appVersion;
