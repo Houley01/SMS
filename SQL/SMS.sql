@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 01:31 PM
+-- Generation Time: May 07, 2018 at 01:46 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -44,6 +44,7 @@ CREATE TABLE `asset` (
 --
 
 INSERT INTO `asset` (`AssetID`, `Brand`, `Type`, `Model`, `Serial_Number`, `DateIntroduced`, `DateWrittenOff`, `RoomID`) VALUES
+(0, 'Unknown', 'Unknown', 'Unknown', 'Unknown', '2018-05-07', NULL, NULL),
 (10001001, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-001', '2015-05-11', '0000-00-00', 9),
 (10001002, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-002', '2015-05-11', NULL, 121),
 (10001003, 'Dell', 'Desktop', 'Inspiron Small Desktop', 'dell-003', '2015-05-11', NULL, 120),
@@ -124,11 +125,12 @@ CREATE TABLE `job` (
 --
 
 INSERT INTO `job` (`JobID`, `DateLogged`, `UserID`, `RoomID`, `AssetID`, `Broken_Mouse`, `Broken_Keyboard`, `Broken_Screen`, `ExtraInfo`, `JobStatusID`, `PartsUsed`, `DateComplete`) VALUES
-(1, '2018-03-26 04:48:02', 2, 1, 10001004, '2', '2', '2', 'Keyboard was snapped in half when the student could not get his Website to WORK.', 2, 'Ram, Cleaned Case,', '0000-00-00 00:00:00'),
+(1, '2018-03-26 04:48:02', 2, 1, 10001004, '2', '2', '2', 'Keyboard was snapped in half when the student could not get his Website to WORK.', 2, 'Ram, Cleaned Case,', '2018-05-03 14:00:00'),
 (2, '2018-03-26 04:48:22', 2, 3, NULL, '5', '5', '5', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
 (3, '2018-03-26 04:48:35', 2, 26, NULL, '2', '5', '', 'Student has used a pen to break the computer, currently a pen is sticking out of the screen.', 1, NULL, NULL),
 (6, '2018-03-26 04:49:41', 2, 38, NULL, '1', '1', '1', 'Student has used a hammer to break on the desktop', 1, NULL, NULL),
-(7, '2018-03-29 13:07:52', 2, 19, NULL, '0', '1', '0', 'Water was spilled on the keyboard,', 1, NULL, NULL);
+(7, '2018-03-29 13:07:52', 2, 19, NULL, '0', '1', '0', 'Water was spilled on the keyboard,', 1, NULL, NULL),
+(8, '2018-05-04 09:55:13', 1, 6, 10001001, '', '', '', 'does not want too boot\r\n', 2, 'Can Air', '2018-05-06 14:00:00');
 
 -- --------------------------------------------------------
 
@@ -377,7 +379,7 @@ ALTER TABLE `building`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `jobstatus`

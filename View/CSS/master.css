@@ -19,6 +19,10 @@
   font-size: 13px !important;
 }
 
+#CloseExtraInfo {
+  height: 180px;
+}
+
 h3 {
   margin: 0 !important;
 }
@@ -58,12 +62,12 @@ footer {
 #Loading_Screen {
   visibility: hidden;
   position: fixed;
-  z-index: 1;
-  top: 0;
+  z-index: 99999;
+  top: 50;
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba( 255, 255, 255, .8) url('../images/pleasewait.gif') 50% 50% no-repeat;
+  background: rgba( 255, 255, 255, .8);
 }
 
 /* Phone */

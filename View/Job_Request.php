@@ -64,22 +64,32 @@
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Mouse</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse" name="Broken_Mouse">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Mouse" name="Broken_Mouse" onchange="OnChangeJobRequest(this)"
+					<?php if (isset($_SESSION["Mouse"])) {
+          	echo 'value="'.$_SESSION["Mouse"].'"';
+          } ?>
+					>
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Keyboards</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Keyboard" name="Broken_Keyboard">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Keyboard" name="Broken_Keyboard" onchange="OnChangeJobRequest(this)" <?php if (isset($_SESSION["Keyboard"])) {
+				 echo 'value="'.$_SESSION["Keyboard"].'"';
+				 } ?>>
         </div>
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Number Of Screens</span>
-          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Screen" name="Broken_Screen">
+          <input type="text" class="form-control" placeholder="Number" aria-describedby="basic-addon1" id="Broken_Screen" name="Broken_Screen" onchange="OnChangeJobRequest(this)" <?php if (isset($_SESSION["Screen"])) {
+				 echo 'value="'.$_SESSION["Screen"].'"';
+				 } ?>>
         </div>
       </div>
       <div class="row">
         <div class="row_heading">
           <h3>Any Other Problem Or Infomation We May Need To Know Before Coming Out.</h3>
         </div>
-        <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false"></textarea>
+        <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false" onchange="OnChangeJobRequest(this)" id="ExtraInfo"><?php if (isset($_SESSION["ExtraInfo"])) {
+			 echo $_SESSION["ExtraInfo"];
+		 		} ?></textarea>
       </div>
 
       <div class="row">

@@ -1,5 +1,5 @@
 <?php
-  function ViewJobModal() {
+  function ViewOpenJobModal() {
     ?>
     <!-- Modal -->
     <div class="modal fade" id="JobInfo" role="dialog">
@@ -9,7 +9,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title"><button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title" name="JobNumber" id="JobNumber">Job Number </h4></h4>
+            <h4 class="modal-title" name="JobNumber" id="JobNumber">Job Number #<span id="HeaderJobNumber"></span> </h4>
           </div>
           <div class="modal-body">
   					<form class="" id="ViewJob" action="../Model/JobUpdate.php" method="POST">
@@ -61,13 +61,29 @@
               </div>
           </div>
   			</form>
-          <div class="modal-footer">
-  					<button type="button" name="button" class="btn btn-default" id="UpdateJob"><span class="glyphicon glyphicon-ok" ></span> Updated Job Information</button>
+        <?php switch ($_SESSION['UserStatus']) {
+          case 1:
+        echo  '<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
+          </div>';
+            break;
+          case 2:
+            echo
+              '<div class="modal-footer">
+              <button type="button" name="button" class="btn btn-default" id="UpdateJob"><span class="glyphicon glyphicon-ok" ></span> Updated Job Information</button>
 
-  					<button type="button" name="button" class="btn btn-default" id="CloseJob"><span class="glyphicon glyphicon-thumbs-up"></span> Close Job </button>
+              <button type="button" name="button" class="btn btn-default" id="CloseJob"><span class="glyphicon glyphicon-thumbs-up"></span> Close Job </button>
 
-  					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
-          </div>
+              <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
+              </div>';
+            break;
+          default:
+        echo  '<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
+          </div>';
+            break;
+        } ?>
+
         </div>
 
       </div>
@@ -76,6 +92,88 @@
     $(document).ready(function(){
         $("#Open").click(function(){
             $("#JobInfo").modal();
+        });
+    });
+    </script>
+  <?php }
+  function ViewCloseJobModal() {
+    ?>
+    <!-- Modal -->
+    <div class="modal fade" id="CloseJobInfo" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" name="JobNumber">Job Number #<span id="CloseJobNumber"></span></h4>
+          </div>
+          <div class="modal-body">
+  						<input type="text" hidden name="JobID" id="CloseJobID" value="">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Name Of Reporter</span>
+                <div disabled class="form-control" aria-describedby="basic-addon1" id="CloseUserID" name="UserID">
+                </div>
+              </div>
+  						<div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Date Submitted</span>
+                <div disabled class="form-control" aria-describedby="basic-addon1" name="DateLogged" id="CloseDateLogged">
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Location</span>
+                <div disabled class="form-control" aria-describedby="basic-addon1" id="CloseRoomID" name="RoomID">
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">AssetID</span>
+                <div class="form-control" aria-describedby="basic-addon1" id="CloseAssetID" name="AssetID" placeholder="Please add the AssetID of The Broken Items">
+              </div>
+            </div>
+  						<div class="row_heading">
+  							<h5>Broken Equipment</h5>
+  						</div>
+  						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Mouse</span>
+                <div class="form-control" aria-describedby="basic-addon1" id="CloseBroken_Mouse" name="Broken_Mouse" placeholder="Mouse">
+                </div>
+  							<span class="input-group-addon" id="basic-addon1">Keyboard</span>
+  	            <div class="form-control" aria-describedby="basic-addon1" id="CloseBroken_Keyboard" name="Broken_Keyboard" placeholder="Keyboard">
+                </div>
+  							<span class="input-group-addon" id="basic-addon1">Screen</span>
+  	 						<div class="form-control" aria-describedby="basic-addon1" id="CloseBroken_Screen" name="Broken_Screen" placeholder="Screen">
+              </div>
+            </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Extra Information</span>
+                <div class="form-control" aria-describedby="basic-addon1" id="CloseExtraInfo" name="ExtraInfo">
+              </div>
+              </div>
+  						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Parts Used</span>
+  							<div  class="form-control" aria-describedby="basic-addon1" name="PartsUsed" id="ClosePartsUsed">
+  						</div>
+              </div>
+  						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Job Status</span>
+  							<div disabled class="form-control" aria-describedby="basic-addon1" name="JobStatusID" id="CloseJobStatusID">
+  						</div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Date Complete</span>
+                <div disabled class="form-control" aria-describedby="basic-addon1" name="DateComplete" id="CloseDateComplete">
+              </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+    $(document).ready(function(){
+        $("#CloseJobButton").click(function(){
+            $("#CloseJobInfo").modal();
         });
     });
     </script>

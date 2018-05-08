@@ -114,7 +114,13 @@
           echo '<div class="col-md-1 No_Phone No_Tablet">' . $row['Broken_Keyboard'] . ' Keyboard</div>';
           echo '<div class="col-md-2 No_Phone No_Tablet">' . $row['Broken_Screen'] . ' Screens</div>';
           echo '<div class="col-md-2 col-xs-3">' . $row['JobStatusName'] . '</div>';
-          echo '<div class="col-md-2 col-xs-2"><button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View</button></div>';
+					if ($row['JobStatusID'] == 2) {
+						echo '<div class="col-md-2 col-xs-2"><button type="button" class="btn btn-ms btn-info" name="button" onclick="CloseStaffViewableJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#CloseJobInfo">View</button></div>';
+					} else {
+          	echo '<div class="col-md-2 col-xs-2">
+							<button type="button" class="btn btn-ms btn-info" name="button" onclick="OpenJob(this)" value="'. $row['JobID'] .'" data-toggle="modal" data-target="#JobInfo">View</button>
+							</div>';
+					}
           echo "</div>";
         }
       ?>
@@ -131,7 +137,10 @@
 
 </div>
 
-  <?php ViewJobModal(); ?>
+  <?php
+		ViewOpenJobModal();
+		ViewCloseJobModal();
+ 	?>
 </div>
 
 

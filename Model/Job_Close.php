@@ -11,7 +11,7 @@ include '../Model/_Connection.php';
     `ExtraInfo` = '" . $_POST["ExtraInfo"] ."',
     `PartsUsed` = '" . $_POST["PartsUsed"] ."',
     `JobStatusID` = 2,
-    `DateComplete` = 0
+    `DateComplete` = CURRENT_DATE
    WHERE
     `job`.`JobID` = '". $_POST["JobID"] ."';";
   $conn = dbConnect();

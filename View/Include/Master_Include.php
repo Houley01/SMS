@@ -58,7 +58,7 @@ function HTMLFooter() { ?>
   	});
   </script>
 
-  <div id="Loading_Screen"></div>
+  <div id="Loading_Screen"><?php Loading(); ?></div>
   <div class="error">
     <p id="BrowserInfomartion"></p>
     <div>
@@ -208,29 +208,29 @@ function HTMLFooter() { ?>
       <div class="row">
       	<h2 class="heading">Most Recent Job Request</h2>
         <?php
-      foreach ($ResultsMostRecentOpenSQL as $Recent_Jobs) {
-      echo '<div class="col-md-4">';
-         // TITTLE
-      echo '	<h3>Job Number <span>#'. $Recent_Jobs['JobID'] . '</span> </h3>';
-         // Location
-    echo '		<h2>Location</h2>';
-    echo '<p>'.$Recent_Jobs["BuildingName"].' - '.$Recent_Jobs["RoomName"].' </p>';
-        // Job Description Heading
-    echo '		<h3>Quick Summary</h3>';
-         // Quick Summary
-      echo '<p> Broken Mouse '.$Recent_Jobs["Broken_Mouse"].' </p>
-      <p> Broken Keyboard '.$Recent_Jobs["Broken_Keyboard"].' </p>
-      <p> Broken Screen '.$Recent_Jobs["Broken_Screen"].' </p>';
-         // Link To Job Form
-         echo '<button type="button" name="button" class="btn btn-default" id="Open" onclick="OpenJob(this)" data-toggle="modal" data-target="#JobInfo" value="'.$Recent_Jobs["JobID"].'">View More Details <span class="glyphicon glyphicon-chevron-right"></span></button>';
-         echo '</div>';
-    }
+        foreach ($ResultsMostRecentOpenSQL as $OpenJob) {
+          echo '<div class="col-md-4">';
+             // TITTLE
+          echo '	<h3>Job Number <span># '.$OpenJob['JobID'].'</h3>';
+             // Location
+          echo '	<h3>Location</h3>';
+          echo '  <p>'.$OpenJob["BuildingName"].' - '.$OpenJob["RoomName"].' </p>';
+            // Job Description Heading
+          echo '	<h3>Description From The Completed Job Request</h3>';
+            // Job Description
+          echo '	<p>'.$OpenJob['ExtraInfo'].' , Date the Job Was Logged: '.$OpenJob['DateLogged'].' </p>';
+            // Date Completed
+          echo '	<h4>Date Completed: '.$OpenJob['DateComplete'].'</h4>';
+             // Link To Job Form
+              echo '<button type="button" name="button" class="btn btn-default" id="CloseJobButton" onclick="CloseStaffViewableJob(this)" data-toggle="modal" data-target="#CloseJobInfo" value="'.$OpenJob["JobID"].'">View More Details <span class="glyphicon glyphicon-chevron-right"></span></button>';
+              echo '</div>';
+        }
     ?>
     		</div>
 
     		<hr>
     <?php
-    ViewJobModal();
+    ViewCloseJobModal();
   }
 // Admin
   function AdminNav() {
@@ -312,60 +312,37 @@ function HTMLFooter() { ?>
 
     		<hr> ';
 ?>
-      <!-- $ResultsMostRecentCloseSQL = MostRecentCloseJobSQL(); -->
     		<!-- Most Recent Jobs Complete -->
     		<div class="row">
-    			<h2 class="heading">Most Recent Jobs Complete</h2>
-    			<div class="col-md-4">
-    				<!-- TITTLE -->
-    				<h2>Job Title</h2>
-    				<!-- Location-->
-    				<h3>Location</h3>
-    				<!--Job Description Heading -->
-    				<h3>Description Of The Job Request</h3>
-    				<!-- Job Description -->
-    				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-    				<!-- Date and Time Completed -->
-    				<h4>Date Completed:../../....</h4>
-    				<h4>Time Completed:..:.. AM/PM</h4>
-    				<!-- Link To Job Form -->
-    				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-    			</div>
-    			<div class="col-md-4">
-    				<!-- TITTLE -->
-    				<h2>Job Title</h2>
-    				<!-- Location-->
-    				<h3>Location</h3>
-    				<!--Job Description Heading -->
-    				<h3>Description Of The Job Request</h3>
-    				<!-- Job Description -->
-    				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-    				<!-- Date and Time Completed -->
-    				<h4>Date Completed:../../....</h4>
-    				<h4>Time Completed:..:.. AM/PM</h4>
-    				<!-- Link To Job Form -->
-    				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-    			</div>
-    			<div class="col-md-4">
-    				<!-- TITTLE -->
-    				<h2>Job Title</h2>
-    				<!-- Location-->
-    				<h3>Location</h3>
-    				<!--Job Description Heading -->
-    				<h3>Description Of The Job Request</h3>
-    				<!-- Job Description -->
-    				<p>Computer in A25 are missing 3 mouse, please fix as soon as possible.</p>
-    				<!-- Date and Time Completed -->
-    				<h4>Date Completed:../../....</h4>
-    				<h4>Time Completed:..:.. AM/PM</h4>
-    				<!-- Link To Job Form -->
-    				<p><a class="btn btn-default" href="#" role="button">View More Details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+          <h2 class="heading">Most Recent Job Request Completed</h2>
+    		<?php
+        $ResultsMostRecentCloseSQL = MostRecentCloseJobSQL();
+        foreach ($ResultsMostRecentCloseSQL as $CloseJob) {
+          echo '<div class="col-md-4">';
+    				 // TITTLE
+    			echo '	<h3>Job Number <span># '.$CloseJob['JobID'].'</h3>';
+    				 // Location
+    			echo '	<h3>Location</h3>';
+          echo '  <p>'.$CloseJob["BuildingName"].' - '.$CloseJob["RoomName"].' </p>';
+    				// Job Description Heading
+    			echo '	<h3>Description From The Completed Job Request</h3>';
+    				// Job Description
+    			echo '	<p>'.$CloseJob['ExtraInfo'].' , Date the Job Was Logged: '.$CloseJob['DateLogged'].' </p>';
+    				// Date Completed
+    			echo '	<h4>Date Completed: '.$CloseJob['DateComplete'].'</h4>';
+    				 // Link To Job Form
+    			    echo '<button type="button" name="button" class="btn btn-default" id="CloseJobButton" onclick="CloseStaffViewableJob(this)" data-toggle="modal" data-target="#CloseJobInfo" value="'.$CloseJob["JobID"].'">View More Details <span class="glyphicon glyphicon-chevron-right"></span></button>';
+              echo '</div>';
+        }
+    			 ?>
     			</div>
     		</div>
 
     		<hr>
 
-    <?php ViewJobModal();
+    <?php
+    ViewOpenJobModal();
+    ViewCloseJobModal();
   }
 
   // Limit Page Display
@@ -380,4 +357,14 @@ function HTMLFooter() { ?>
     ';
   }
 
+  function Loading() {
   ?>
+    <h1 class="text-center">Loading Your Request</h1>
+    <svg class="svg-divider" x="0px" y="0px" viewBox="0 0 80 3" xml:space="preserve">
+    <rect x="1" fill="rgb" width="16" height=".2" text="Loading">
+    <animate attributeName="x" attributeType="XML" values="1; 64; 1" begin="0s" dur="5s" repeatCount="indefinite">
+    </rect>
+  </svg>
+  <?php }
+
+?>
