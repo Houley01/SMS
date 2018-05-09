@@ -30,9 +30,18 @@
       LoginBody();
       break;
     }
-    HTMLFooter()
+    HTMLFooter();
   ?>
+  <!-- Datepicker Remover After WDV3 Is Marked ?!?!?! -->
+  <div class="col-md-4 postion text-center">
+   <div class="input-group date" data-date-format="dd.mm.yyyy">
+     <div class="input-group-addon" >
+       <span class="glyphicon glyphicon-th"></span>
+     </div>
+     <input  type="text" class="form-control" placeholder="dd.mm.yyyy">
+   </div>
+  </div>
 </div>
 <!-- Test Custom Alert Box -->
-<button type="button" name="button" id="Alert">Test Alert</button>
-  <?php testAlert(); ?>
+<!-- <button type="button" name="button" id="Alert">Test Alert</button> -->
+  <!-- <?php //testAlert(); ?> -->

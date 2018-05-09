@@ -3,6 +3,7 @@ window.onload = function() {
 	startTime();
 	GetBrowserInfo();
 	jQueryValidator();
+	jQueryDatePicker();
 }
 // Detect the Browser
 function GetBrowserInfo() {
@@ -34,4 +35,10 @@ function jQueryValidator() {
 		modules: 'date, security, file'
 	});
 	$('#ExtraInfo').restrictLength($('#MaxLengthOfTextArea'));
+}
+
+function jQueryDatePicker() {
+	$('.input-group.date').datepicker({
+		format: "dd.mm.yyyy"
+	});
 }
