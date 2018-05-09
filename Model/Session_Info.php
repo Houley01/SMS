@@ -20,4 +20,14 @@
     print_r($_SESSION);
     exit();
   }
+  if ($_GET["Session"] == 'clear') {
+    unset($_SESSION["Mouse"]);
+    unset($_SESSION["Keyboard"]);
+    unset($_SESSION["Screen"]);
+    unset($_SESSION["ExtraInfo"]);
+    print_r($_SESSION);
+  }
+  if ($_GET["Session"] == 'print') {
+    print_r($_SESSION);
+  }
 ?>

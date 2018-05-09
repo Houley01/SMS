@@ -44,8 +44,8 @@ function HTMLFooter() { ?>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- jQuery addons -->
   <!-- jquery validate -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
-
+  <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
   <!-- Bootstrap JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    <!-- Ajax JavaScript File -->
@@ -261,7 +261,7 @@ function HTMLFooter() { ?>
     							<li><a href="#"><span class="glyphicon glyphicon-import"></span> Import Asset Information</a></li>
     						</ul>
     					</li>
-    					<li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statistics</a></li>
+    					<li><a href="Stats.php"><span class="glyphicon glyphicon-stats"></span> Statistics</a></li>
     				</ul>
     				<ul class="nav navbar-nav navbar-right ">
     					<li><a href="../Control/Logout.php" class="text_nav"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
