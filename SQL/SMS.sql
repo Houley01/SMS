@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2018 at 01:46 PM
+-- Generation Time: May 10, 2018 at 10:08 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -301,7 +301,7 @@ CREATE TABLE `user` (
   `F.Name` varchar(255) NOT NULL,
   `L.Name` varchar(255) NOT NULL,
   `Username` varchar(8) NOT NULL,
-  `Password` varchar(32) NOT NULL,
+  `Password` varchar(255) NOT NULL,
   `UserStatus` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -310,8 +310,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `F.Name`, `L.Name`, `Username`, `Password`, `UserStatus`) VALUES
-(1, 'Staff', 'Test', 'Staff', 'password', 1),
-(2, 'Admin', 'Test', 'Admin', 'password', 2);
+(1, 'Staff', 'Test', 'Staff', '$2y$10$9soxrJIBdNhAfqKqpCw9l.t/pxiRJsa6J/hNJ36aEEBaLcELsaKzW', 1),
+(2, 'Admin', 'Test', 'Admin', '$2y$10$JKo6LfkV.LN281URerYsOOwxofbP6pNkbYnGfnwdFVbzGeUi1L6eu', 2);
 
 --
 -- Indexes for dumped tables
@@ -379,7 +379,7 @@ ALTER TABLE `building`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `JobID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jobstatus`
