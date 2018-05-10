@@ -2,7 +2,7 @@
   session_start();
   // include 'include/header.php';
   require_once '../session.php';
-  require_once 'include/Master_Include.php';
+  require_once 'Include/Master_Include.php';
   HTMLHeader();
   // If User = 0 Amoumus show Login_Nav.php = include 'include/Login_nav.php';
   // If User = 0 Amoumus show include 'include/Login_Body.php';
@@ -16,6 +16,7 @@
     case 0:
       LoginNav();
       LoginBody();
+      LoginModal();
       break;
     case 1:
       StaffNav();
@@ -28,6 +29,7 @@
     default:
       LoginNav();
       LoginBody();
+      LoginModal();
       break;
     }
     HTMLFooter();

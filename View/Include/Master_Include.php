@@ -1,7 +1,7 @@
 <?php
-require_once '../Model/_Connection.php';
-require_once '../Model/functions.php';
-require_once '../View/Include/Master_Modal.php';
+  require_once '../Model/_Connection.php';
+  require_once '../Model/Functions.php';
+  require_once '../View/Include/Master_Modal.php';
 // Header Content
   function HTMLHeader() { ?>
     <!DOCTYPE html>
@@ -52,13 +52,6 @@ function HTMLFooter() { ?>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    <!-- Ajax JavaScript File -->
   <script src="../Control/JS/ajax.js"></script>
-  <script type="text/javascript">
-  	$(document).ready(function() {
-  		$("#login").click(function() {
-  			$("#loginModal").modal();
-  		});
-  	});
-  </script>
 
   <div id="Loading_Screen"><?php Loading(); ?></div>
   <div class="error">
@@ -128,39 +121,6 @@ function HTMLFooter() { ?>
           <?php clock(); ?>
     	   </div>
     		<div class="container">
-
-    		</div>
-
-    		<!-- Modal -->
-    		<div class="modal fade" id="loginModal" role="dialog">
-    			<div class="modal-dialog">
-
-    				<!-- Modal content-->
-    				<div class="modal-content">
-    					<div class="modal-header" style="padding:35px 50px;">
-    						<button type="button" class="close" data-dismiss="modal">&times;</button>
-    						<h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-    					</div>
-    					<div class="modal-body" style="padding:40px 50px;">
-    						<form role="form" class="" action="../Control/Login.php" method="POST">
-    							<div class="form-group">
-    								<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-    								<input type="text" class="form-control" name="username" id="username" placeholder="Username" value="Admin">
-    							</div>
-    							<div class="form-group">
-    								<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-    								<input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="Enter password" value="password">
-    							</div>
-    							<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-    						</form>
-    					</div>
-    					<div class="modal-footer">
-    						<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-
-    					</div>
-    				</div>
-
-    			</div>
     		</div>
     		<hr>
     <?php
@@ -358,7 +318,7 @@ function HTMLFooter() { ?>
       <option value="">30</option>
     ';
   }
-
+// Loading SVG
   function Loading() {
   ?>
     <h1 class="text-center">Loading Your Request</h1>

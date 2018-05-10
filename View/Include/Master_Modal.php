@@ -1,4 +1,43 @@
 <?php
+  function LoginModal() {
+?>
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header" style="padding:35px 50px;">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+          </div>
+          <div class="modal-body" style="padding:40px 50px;">
+            <form role="form" class="" action="../Control/Login.php" method="POST">
+              <div class="form-group">
+                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="Admin">
+              </div>
+              <div class="form-group">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="Enter password" value="password">
+              </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#login").click(function() {
+          $("#loginModal").modal();
+        });
+      });
+      </script>
+<?php
+  }
   function ViewOpenJobModal() {
     ?>
     <!-- Modal -->
@@ -207,13 +246,74 @@
       });
     });
     </script>
-<?php } ?>
+<?php }
 
+  // Asset Information Modal
+  function AssetInfoModal() {
+?>
+      <!-- Modal -->
+      <div class="modal fade" id="AssetInfo" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" name="AssetNumber" id="AssetNumber">Asset Number </h4></h4>
+            </div>
+            <div class="modal-body">
+    					<form class="" id="ViewAsset" action="#" method="POST">
+    						<input type="text" hidden name="Type" id="Type">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Asset Number</span>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" id="AssetID" name="AssetID">
+                </div>
+    						<div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Brand</span>
+                  <input type="text"  class="form-control" aria-describedby="basic-addon1" name="Brand" id="Brand">
+                </div>
 
- <!-- <script type="text/javascript">
-   $(document).ready(function() {
-     $("#login").click(function() {
-       $("#loginModal").modal();
-     });
-   });
- </script> -->
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Model</span>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" id="Model" name="Model">
+                </div>
+    						<div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Serial Number</span>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" id="Serial_Number" name="Serial_Number">
+                </div>
+    						<div class="input-group">
+    							<span class="input-group-addon" id="basic-addon1">Location</span>
+    							<input type="text"  class="form-control" aria-describedby="basic-addon1" id="LocationID" name="LocationID">
+    						</div>
+    						<div class="input-group">
+    							<span class="input-group-addon" id="basic-addon1">Date Introduced</span>
+    							<input disabled type="text"  class="form-control" aria-describedby="basic-addon1" name="DateIntroduced" id="DateIntroduced">
+    						</div>
+    						<div class="input-group">
+    							<span class="input-group-addon" id="basic-addon1">Date Written Off</span>
+    							<input type="text"  class="form-control" aria-describedby="basic-addon1" name="DateWrittenOff" id="DateWrittenOff">
+    						</div>
+
+            </div>
+    			</form>
+            <div class="modal-footer">
+    					<button type="button" name="button" class="btn btn-default" id="UpdateAsset"><span class="glyphicon glyphicon-ok" ></span> Updated Asset Information</button>
+
+    					<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close Pop-up </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+    $(document).ready(function(){
+        $("#Open").click(function(){
+            $("#AssetInfo").modal();
+        });
+    });
+    </script>
+<?php
+  }
+?>

@@ -3,7 +3,6 @@
 	require_once 'include/Admin_Access.php';
 	require_once '../Model/_Connection.php';
 	require_once '../View/Include/Master_Include.php';
-	require_once '../View/Include/Master_Modal.php';
 	HTMLHeader();
 ?>
 <div class="Work_Around_Nav">
@@ -88,25 +87,11 @@
 					<div class="col-md-2 No_Phone No_Tablet Heading_Table">Screen</div>
 					<div class="col-md-2 col-xs-3 Heading_Table">Job Status</div>
 					<div class="col-md-2 col-xs-2 Heading_Table">View</div>
-
       </div>
-
       <div>
-				<!-- MUST DO A SORT THROUGHT JOBS FUNCTION -->
       <?php
-        $JobsLogged_MySQL = "SELECT * FROM job
-				INNER JOIN rooms ON job.RoomID = rooms.RoomID
-				INNER JOIN building ON rooms.BuildingID = building.BuildingID
-				INNER JOIN jobstatus ON job.JobStatusID = jobstatus.JobStatusID;";
-        $conn = dbConnect();
-      	$stmt = $conn->prepare($JobsLogged_MySQL);
-      	$stmt->execute();
-      	$result = $stmt->fetchAll();
-
-        // print_r($result);
-        // die();
-        foreach($result as $row) {
-
+				$CompleteJobsList  = ViewAllJobs();
+        foreach($CompleteJobsList  as $row) {
           echo '<div class="Row_Table row">';
           echo '<div class="col-md-2 col-xs-3"> ' . $row['JobID'] . ' </div>';
           echo '<div class="col-md-2 col-xs-3">'. $row['BuildingName'] . ' - Room ' . $row['RoomName'] . '</div>';
@@ -142,6 +127,4 @@
 		ViewCloseJobModal();
  	?>
 </div>
-
-
 <script src="../Control/js/ajax.js" charset="utf-8"></script>

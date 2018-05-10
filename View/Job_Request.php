@@ -1,7 +1,7 @@
 <script src="../Control/JS/ajax.js"defer></script>
 <?php
 	session_start();
-	require_once 'Include/Master_Include.php';
+	require_once '../View/Include/Master_Include.php';
 	switch ($_SESSION['UserStatus']) {
 		case 1:
     	StaffNav();
@@ -89,9 +89,7 @@
         <div class="row_heading">
           <h3>Any Other Problem Or Infomation We May Need To Know Before Coming Out.</h3>
         </div>
-        <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false" onchange="OnChangeJobRequest(this)" id="ExtraInfo" required data-validation="custom" data-validation-regexp="^[A-Za-z -\' 0-9]$" data-validation-error-msg="Please Enter Details Of How The Event Happened, And What The Device Is Doing. "><?php if (isset($_SESSION["ExtraInfo"])) {
-			 			echo $_SESSION["ExtraInfo"];
-		 				} ?></textarea>
+        <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false" onchange="OnChangeJobRequest(this)" id="ExtraInfo" required data-validation="custom" data-validation-regexp="^[A-Za-z -\'  0-9]{0,}" data-validation-error-msg="Please Enter Details Of How The Event Happened, And What The Device Is Doing. "><?php if (isset($_SESSION["ExtraInfo"])) {echo $_SESSION["ExtraInfo"];}?></textarea>
 				<p><span id="MaxLengthOfTextArea">1000</span> Characters Left</p>
       </div>
 
