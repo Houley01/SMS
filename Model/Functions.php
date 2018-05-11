@@ -1,6 +1,6 @@
 <?php
 //sanitise data sent via POST and SEND
-  function Clean_User_Input($data) {
+  function clean($data) {
     $data = trim($data);
     $data= stripslashes($data);
     $data = htmlspecialchars($data);

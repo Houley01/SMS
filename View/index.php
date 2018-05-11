@@ -16,23 +16,27 @@
     case 0:
       LoginNav();
       LoginBody();
+      HTMLFooter();
       LoginModal();
       break;
     case 1:
       StaffNav();
       StaffBody();
+      HTMLFooter();
       break;
     case 2:
       AdminNav();
       AdminBody();
+      HTMLFooter();
       break;
     default:
       LoginNav();
       LoginBody();
+      HTMLFooter();
       LoginModal();
       break;
     }
-    HTMLFooter();
+
   ?>
   <!-- Datepicker Remover After WDV3 Is Marked ?!?!?! -->
   <div class="col-md-4 postion text-center">
