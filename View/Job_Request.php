@@ -1,4 +1,3 @@
-<script src="../Control/JS/ajax.js"defer></script>
 <?php
 	session_start();
 	require_once '../View/Include/Master_Include.php';

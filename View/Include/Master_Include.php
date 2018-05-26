@@ -25,7 +25,7 @@
 
     	<!-- CUSTOM FILES -->
     	<link rel="stylesheet" type="text/css" media="screen" href="/SMS/View/CSS/master.css" />
-    	<script src="../Control/JS/main.js" defer></script>
+    	<script src="/SMS/View/JS/main.js" defer></script>
 
 
     </head>
@@ -46,12 +46,10 @@ function HTMLFooter() { ?>
   <!-- jquery validate -->
   <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-  <!-- Date Picker (Remover Before Production) -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js" charset="utf-8"></script>
   <!-- Bootstrap JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    <!-- Ajax JavaScript File -->
-  <script src="../Control/JS/ajax.js"></script>
+  <script src="/SMS/View/JS/ajax.js"></script>
 
   <div id="Loading_Screen"><?php Loading(); ?></div>
   <div class="error">
