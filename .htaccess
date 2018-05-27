@@ -1,1 +1,18 @@
+# Deny Access to .htaccess
+<Files .htaccess>
+Order deny,allow
+Deny from all
+</Files>
+
+# Disable Directory Browsing
+Options -Indexes
+
+# Deny access to _Connection and sessions
+<FilesMatch "_Connection.php|session.php">
+Order deny,allow
+Deny from all
+</FilesMatch>
+
+# Error Page Redirect
+ErrorDocument 403 /SMS/Error/403error.php
 ErrorDocument 404 /SMS/Error/404error.php
