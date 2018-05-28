@@ -127,4 +127,4 @@
 		ViewCloseJobModal();
  	?>
 </div>
-<script src="../Control/js/ajax.js" charset="utf-8"></script>
+<script src="../View/js/ajax.js" charset="utf-8"></script>

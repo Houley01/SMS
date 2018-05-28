@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="container">
-    <form class="" action="../Model/Submit_Form.php" method="post">
+    <form class="" action="../Model/Submit_Form.php" method="post" enctype="multipart/form-data">
       <!-- name of person reporting a Problem -->
       <input type="text" hidden name="Username" value="">
 
@@ -91,6 +91,10 @@
         <textarea name="ExtraInfo" rows="8" cols="80" class="form-control" placeholder="Any Infomation You Wish To Add" spellcheck="true" wrap="soft" draggable="false" onchange="OnChangeJobRequest(this)" id="ExtraInfo" required data-validation="custom" data-validation-regexp="^[A-Za-z -\'  0-9]{0,}" data-validation-error-msg="Please Enter Details Of How The Event Happened, And What The Device Is Doing. "><?php if (isset($_SESSION["ExtraInfo"])) {echo $_SESSION["ExtraInfo"];}?></textarea>
 				<p><span id="MaxLengthOfTextArea">1000</span> Characters Left</p>
       </div>
+			<div class="row">
+				<span>File Upload</span>
+				<input type="file" name="UserFile">
+			</div>
 
       <div class="row">
         <input type="submit" class="btn btn-lg btn-success" name="" value="Submit" required data-validation="disabledFormFilter">

@@ -95,6 +95,10 @@
   							<input type="text" disabled class="form-control" aria-describedby="basic-addon1" name="JobStatusID" id="JobStatusID">
   						</div>
               <div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Files Uploaded</span>
+  							<input type="file"  class="form-control" aria-describedby="basic-addon1" name="FileUpload" id="FileUpload">
+  						</div>
+              <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">Date Complete</span>
                 <input type="text" disabled class="form-control" aria-describedby="basic-addon1" name="DateComplete" id="DateComplete">
               </div>
